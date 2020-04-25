@@ -15,10 +15,12 @@ a {
 
 table {
   background-color: white;
-  width: 80%
+  width: 80%;
+  float: left;
+  clear: left;
 }
 
-tr td{
+tr td {
   text-align: center;
   width: 5%;
 }
@@ -42,4 +44,35 @@ tbody tr {
 
 tfoot tr td {
   text-align: center;
+}
+
+header {
+  width: 80%;
+  height: 100px;
+  align-content: bottom;
+}
+#header {
+  float: left;
+}
+
+#divPesquisa {
+  float: right;
+  margin-top: 70px; 
+  height: 30px;
+}
+
+#dica {
+  float: right;
+  width: 18%;
+  background-color: Khaki;
+  color: red;
+  padding: 5px;
+}
+
+#filtros {
+  float: right;
+  padding: 5px;
+  width: 18%;
+  margin-top: 10px;
+  outline: 1px solid white;
 }

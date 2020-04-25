@@ -5,8 +5,17 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1>Gestão de linhas</h1>
-    <p>Linhas cadastradas no sistema</p>
+    <header>
+    <div id="header">
+      <h1>Gestão de linhas</h1>
+      <p>Linhas cadastradas no sistema</p>
+    </div>
+    <div id="divPesquisa">
+      <label for="pesquisa">Pesquisar linha:</label>
+      <input type="search" id="pesquisa">
+      <button>Pesquisar</button>
+    </div>
+    </header>
     <table>
       <thead>
         <tr>
@@ -34,6 +43,10 @@
       <td>
         <a href="/delete/<%= customer._id %>" onclick="return confirm('Tem certeza?');">Excluir</a>
       </td>
+      <td>BlaBlaBla</td>
+      <td>BlaBlaBla</td>
+      <td>BlaBlaBla</td>
+      <td>BlaBlaBla</td>
     </tr>
  <% })
 } %>
@@ -46,5 +59,23 @@
         </tr>
       </tfoot>
     </table>
+    <div id="dica">
+      <p> Clique no número da linha para exibir mais detalhes </p>
+    </div>
+    <div id="filtros">
+      <h1>Filtros</h1>
+      <label>Local
+      <select name="local">
+        <option></option>
+        <option>Lucas</option>
+        <option>Teste</option>
+      </select>
+      </label>
+      <p>Razão Social</p>
+      <p>Plano</p>
+      <p>Pacote</p>
+      <p>Status</p>
+      <p>Grupo</p>
+    </div>
   </body>
 </html>
