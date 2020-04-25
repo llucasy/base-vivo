@@ -15,17 +15,19 @@ a {
 
 table {
   background-color: white;
+  width: 80%
 }
 
-tr {
+tr td{
   text-align: center;
+  width: 5%;
 }
 
 tr:nth-child(even) {
   background-color: LightSteelBlue;
 }
 
-tr:hover {
+tbody tr:hover {
   background: SkyBlue;
 }
 
