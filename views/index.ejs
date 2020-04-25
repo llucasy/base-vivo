@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Cadastro de Clientes</title>
+    <title>Gestão de linhas</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1>Listagem de Clientes</h1>
-    <p>Clientes já cadastrados no sistema</p>
+    <h1>Gestão de linhas</h1>
+    <p>Linhas cadastradas no sistema</p>
     <table style="width: 50%;">
       <thead>
-        <tr style="background-color: #CCC">
-          <td style="width: 50%;">Nome</td>
-          <td style="width: 15%;">Idade</td>
-          <td style="width: 15%;">UF</td>
-          <td style="width: 15%;">Ações</td>
+        <tr>
+          <td style="width: 15%;">Linha</td>
+          <td style="width: 15%;">Chip</td>
+          <td style="width: 15%;">Razão Social</td>
+          <td style="width: 15%;">Plano</td>
         </tr>
       </thead>
       <tbody>
@@ -24,7 +24,7 @@
 <% } else {
   docs.forEach(function(customer){ %>
     <tr>
-      <td style="width: 50%;"><a href="/new/<%= customer._id %>"><%= customer.nome %></a></td>
+      <td style="width: 15%;"><a href="/new/<%= customer._id %>"><%= customer.nome %></a></td>
       <td style="width: 15%;"><%= customer.idade %></td>
       <td style="width: 15%;"><%= customer.uf %></td>
       <td style="width: 20%;">
