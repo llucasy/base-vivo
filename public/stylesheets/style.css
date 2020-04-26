@@ -33,7 +33,8 @@ tbody tr:hover {
   background: SkyBlue;
 }
 
-thead tr {
+thead,
+tfoot {
   background-color: MidnightBlue;
   font-size: 16px;
 }
@@ -44,6 +45,10 @@ tbody tr {
 
 tfoot tr td {
   text-align: center;
+}
+
+tfoot tr td a {
+  color: white;
 }
 
 header {
@@ -79,4 +84,8 @@ header {
   width: 18%;
   margin-top: 10px;
   outline: 1px solid white;
+}
+
+#filtros select {
+  width: 50%;
 }
