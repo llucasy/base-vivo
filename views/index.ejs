@@ -12,8 +12,8 @@
     </div>
     <div id="divPesquisa">
       <label for="pesquisa">Pesquisar linha:</label>
-      <input type="search" id="pesquisa">
-      <button>Pesquisar</button>
+      <input type="search" maxlength="11" id="pesquisa">
+      <button id="btnPesquisa">Pesquisar</button>
     </div>
     </header>
     <table>
@@ -60,15 +60,19 @@
       </tfoot>
     </table>
     <div id="dica">
-      <p> Clique no número da linha para exibir mais detalhes </p>
+      <p> Clique no número da linha para exibir mais detalhes. </p>
+      <p> Escolha os filtros abaixo e em seguida clique em pesquisar. </p>
     </div>
     <div id="filtros">
       <h1>Filtros</h1>
       <label>Local
       <select name="local">
         <option></option>
-        <option>Lucas</option>
-        <option>Teste</option>
+        <option>Estoque CT</option>
+        <option>Virtual</option>
+        <option>-</option>
+        <option>Estoque BBA</option>
+        <option>Com colaborador</option>
       </select>
       </label>
       <p>Razão Social</p>
@@ -77,5 +81,6 @@
       <p>Status</p>
       <p>Grupo</p>
     </div>
+    <script src="/javascript/index.js"></script>
   </body>
 </html>

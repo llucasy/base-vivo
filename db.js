@@ -1,12 +1,10 @@
-const key = process.env.BANCO_SENHA;
-
 var mongoClient = require("mongodb").MongoClient;
 var ObjectId = require("mongodb").ObjectID;
 
 mongoClient
   .connect(
-    "mongodb+srv://llucasy:" +
-      key +
+    "mongodb+srv://" + process.env.BANCO_LOGIN + ":" +
+    process.env.BANCO_SENHA +
       "@cluster0-ayz50.mongodb.net/test?retryWrites=true&w=majority",
     { useUnifiedTopology: true }
   )
