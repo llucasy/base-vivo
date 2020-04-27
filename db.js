@@ -3,8 +3,10 @@ var ObjectId = require("mongodb").ObjectID;
 
 mongoClient
   .connect(
-    "mongodb+srv://" + process.env.BANCO_LOGIN + ":" +
-    process.env.BANCO_SENHA +
+    "mongodb+srv://" +
+      process.env.BANCO_LOGIN +
+      ":" +
+      process.env.BANCO_SENHA +
       "@cluster0-ayz50.mongodb.net/test?retryWrites=true&w=majority",
     { useUnifiedTopology: true }
   )
@@ -15,6 +17,7 @@ function findAll(callback) {
   global.conn
     .collection("customers")
     .find({})
+    .limit(30)
     .toArray(callback);
 }
 
@@ -44,4 +47,8 @@ function updateOne(id, item, callback) {
     );
 }
 
-module.exports = { findAll, insert, deleteOne, findOne, updateOne };
+function contar(callback) {
+  global.conn.collection("customers").countDocuments({}, {}, callback);
+}
+
+module.exports = { findAll, insert, deleteOne, findOne, updateOne, contar };

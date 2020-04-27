@@ -11,9 +11,7 @@ btnPesquisa.addEventListener("click", () => {
 });
 
 const contRegistro = document.querySelectorAll(".contRegistro");
-const tfoot = document.querySelector('tfoot tr td').innerHTML;
-let rodape = document.querySelector('tfoot tr td');
+const tfoot = document.querySelector("tfoot tr td").innerHTML;
+let rodape = document.querySelector("tfoot tr td");
 
-rodape.innerHTML = `Exibindo ${contRegistro.length} registros de -  ${tfoot}`;
-
-console.log(contRegistro.length);
+rodape.innerHTML = `Exibindo ${contRegistro.length} registros de ${tfoot}`;

@@ -13,9 +13,10 @@
     <div id="divPesquisa">
       <label for="pesquisa">Pesquisar linha:</label>
       <input type="search" maxlength="11" id="pesquisa">
-      <button id="btnPesquisa">Pesquisar</button>
+      <input type="submit" value="Pesquisar" id="btnPesquisa"/>
     </div>
     </header>
+    <main>
     <table>
       <thead>
         <tr>
@@ -54,11 +55,13 @@
       <tfoot>
         <tr>
           <td colspan="8">
-            <a href="/new">Cadastrar Novo</a>
+            <%= contaRegistro %> - <a href="/new">Cadastrar Novo</a>
           </td>
         </tr>
       </tfoot>
     </table>
+    </main>
+    <aside>
     <div id="dica">
       <p> Clique no número da linha para exibir mais detalhes. </p>
       <p> Escolha os filtros abaixo e em seguida clique em pesquisar. </p>
@@ -117,6 +120,7 @@
       <label>Status</label><br><br>
       <label>Grupo</label><br><br>
     </div>
+    </aside>
     <script src="/javascript/index.js"></script>
   </body>
 </html>
