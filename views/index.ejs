@@ -10,9 +10,10 @@
       <h1>Gestão de linhas</h1>
       <p>Linhas cadastradas no sistema</p>
     </div>
+    <form action="/" method="GET">
     <div id="divPesquisa">
       <label for="pesquisa">Pesquisar linha:</label>
-      <input type="search" maxlength="11" id="pesquisa">
+      <input type="search" name="pesqCamp" maxlength="11" id="pesquisa">
       <input type="submit" value="Pesquisar" id="btnPesquisa"/>
     </div>
     </header>
@@ -38,16 +39,19 @@
 <% } else {
   docs.forEach(function(customer){ %>
     <tr class="contRegistro"> 
-      <td><a href="/new/<%= customer._id %>"><%= customer.nome %></a></td>
-      <td><%= customer.idade %></td>
-      <td><%= customer.uf %></td>
+      <td><a href="/new/<%= customer._id %>"><%= customer.linha %></a></td>
+      <td><%= customer.local %></td>
+      <td><%= customer.razaoSocial %></td>
       <td>
-        <a href="/delete/<%= customer._id %>" onclick="return confirm('Tem certeza?');">Excluir</a>
+        
+        <%= customer.plano %>
+
+        <!-- <a href="/delete/<%= customer._id %>" onclick="return confirm('Tem certeza?');">Excluir</a> -->
       </td>
-      <td>BlaBlaBla</td>
-      <td>BlaBlaBla</td>
-      <td>BlaBlaBla</td>
-      <td>BlaBlaBla</td>
+      <td><%= customer.pacote %></td>
+      <td><%= customer.status %></td>
+      <td><%= customer.grupo %></td>
+      <td><%= customer.obs %></td>
     </tr>
  <% })
 } %>
@@ -121,6 +125,7 @@
       <label>Grupo</label><br><br>
     </div>
     </aside>
+  </form>
     <script src="/javascript/index.js"></script>
   </body>
 </html>

@@ -14,21 +14,20 @@ a {
 }
 
 main {
-float: left;
-width: 80%;
-height: 300px;
+  float: left;
+  width: 80%;
+  height: 300px;
 }
 
 table {
   background-color: white;
   width: 100%;
-  float: left;
-  clear: left;
+  table-layout: fixed;
 }
 
-tr td {
+td {
   text-align: center;
-  width: 5%;
+  word-wrap: break-word;
 }
 
 tr:nth-child(even) {

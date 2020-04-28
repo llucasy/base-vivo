@@ -3,7 +3,13 @@ var router = express.Router();
 
 /* GET home page. */
 router.get("/", function(req, res, next) {
-  global.db.findAll((e, docs) => {
+  var item;
+  if (req.query.pesqCamp) {
+    let re = new RegExp(`\\b${req.query.pesqCamp}`);
+    item = { linha: { $regex: re } };
+  }
+  //String(req.params.pesqCamp)
+  global.db.findAll(item, (e, docs) => {
     if (e) {
       return console.log(e);
     }
@@ -18,14 +24,15 @@ router.get("/", function(req, res, next) {
 });
 
 /* GET delete page. */
-router.get("/delete/:id", function(req, res) {
-  var id = req.params.id;
-  global.db.deleteOne(id, (e, r) => {
-    if (e) {
-      return console.log(e);
-    }
-    res.redirect("/");
-  });
-});
+
+// router.get("/delete/:id", function(req, res) {
+//   var id = req.params.id;
+//   global.db.deleteOne(id, (e, r) => {
+//     if (e) {
+//       return console.log(e);
+//     }
+//     res.redirect("/");
+//   });
+// });
 
 module.exports = router;
