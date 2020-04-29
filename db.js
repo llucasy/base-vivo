@@ -47,8 +47,8 @@ function updateOne(id, item, callback) {
     );
 }
 
-function contar(callback) {
-  global.conn.collection("customers").countDocuments({}, {}, callback);
+function contar(item, callback) {
+  global.conn.collection("customers").countDocuments(item, {}, callback);
 }
 
 module.exports = { findAll, insert, deleteOne, findOne, updateOne, contar };

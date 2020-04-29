@@ -23,6 +23,7 @@ table {
   background-color: white;
   width: 100%;
   table-layout: fixed;
+  margin-bottom: 50px;
 }
 
 td {
@@ -61,6 +62,11 @@ header {
   height: 100px;
   align-content: bottom;
 }
+
+header a {
+  color: white;
+}
+
 #header {
   float: left;
 }

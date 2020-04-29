@@ -3,18 +3,25 @@ var router = express.Router();
 
 /* GET home page. */
 router.get("/", function(req, res, next) {
-  var item;
+  let pesq = {};
+  let local = {};
   if (req.query.pesqCamp) {
     let re = new RegExp(`\\b${req.query.pesqCamp}`);
-    item = { linha: { $regex: re } };
+    pesq = { linha: { $regex: re } };
   }
-  //String(req.params.pesqCamp)
+
+  if (req.query.local) {
+    local = { local: req.query.local };
+  }
+
+  let item = Object.assign(pesq, local);
+
   global.db.findAll(item, (e, docs) => {
     if (e) {
       return console.log(e);
     }
 
-    global.db.contar((err, contaRegistro) => {
+    global.db.contar(item, (err, contaRegistro) => {
       if (err) {
         console.log(err);
       }

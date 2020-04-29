@@ -7,7 +7,7 @@
   <body>
     <header>
     <div id="header">
-      <h1>Gestão de linhas</h1>
+      <h1><a href="/" >Gestão de linhas</a></h1>
       <p>Linhas cadastradas no sistema</p>
     </div>
     <form action="/" method="GET">
@@ -25,7 +25,6 @@
           <td>Local</td>
           <td>Razão Social</td>
           <td>Plano</td>
-          <td>Pacote</td>
           <td>Status</td>
           <td>Grupo</td>
           <td>OBS</td>
@@ -34,21 +33,20 @@
       <tbody>
 <% if(!docs || docs.length == 0) { %>
         <tr>
-          <td colspan="8">Nenhum cliente cadastrado.</td>
+          <td colspan="7">Nenhum resultado encontrado.</td>
         </tr>
 <% } else {
   docs.forEach(function(customer){ %>
     <tr class="contRegistro"> 
       <td><a href="/new/<%= customer._id %>"><%= customer.linha %></a></td>
       <td><%= customer.local %></td>
-      <td><%= customer.razaoSocial %></td>
+      <td><%= customer.razao %></td>
       <td>
         
         <%= customer.plano %>
 
         <!-- <a href="/delete/<%= customer._id %>" onclick="return confirm('Tem certeza?');">Excluir</a> -->
       </td>
-      <td><%= customer.pacote %></td>
       <td><%= customer.status %></td>
       <td><%= customer.grupo %></td>
       <td><%= customer.obs %></td>
@@ -58,8 +56,8 @@
       </tbody>
       <tfoot>
         <tr>
-          <td colspan="8">
-            <%= contaRegistro %> - <a href="/new">Cadastrar Novo</a>
+          <td colspan="7">
+            <%= contaRegistro %> <!-- - <a href="/new">Cadastrar Novo</a> -->
           </td>
         </tr>
       </tfoot>
@@ -75,11 +73,11 @@
       <label>Local
       <select name="local">
         <option></option>
-        <option>Estoque CT</option>
+        <option value="EstoqueCT">Estoque CT</option>
         <option>Virtual</option>
         <option>-</option>
-        <option>Estoque BBA</option>
-        <option>Com colaborador</option>
+        <option value="EstoqueBBA">Estoque BBA</option>
+        <option value="Comcolaborador">Com colaborador</option>
       </select>
       </label><br><br>
       <label>Razão Social
@@ -120,7 +118,6 @@
         <option>SMART EMPRESAS 25GB D</option>
       </select>
       </label><br><br>
-      <label>Pacote</label><br><br>
       <label>Status</label><br><br>
       <label>Grupo</label><br><br>
     </div>

@@ -1,12 +1,13 @@
-const btnPesquisa = document.querySelector("#btnPesquisa");
+const form = document.querySelector("form");
 
-btnPesquisa.addEventListener("click", () => {
+form.addEventListener("submit", event => {
   const cmpPesquisa = document.querySelector("#pesquisa").value;
 
   if (isNaN(cmpPesquisa)) {
-    return alert(
+    alert(
       "Oi, você colocou letra(as) no campo de busca, não posso aceitar :/ favor corrigir :)"
     );
+    event.preventDefault();
   }
 });
 
