@@ -22,7 +22,7 @@ main {
 table {
   background-color: white;
   width: 100%;
-  table-layout: fixed;
+  table-layout: auto;
   margin-bottom: 50px;
 }
 
@@ -95,6 +95,11 @@ header a {
   width: 18%;
   margin-top: 10px;
   outline: 1px solid white;
+  text-align: right;
+}
+
+#filtros h1 {
+  text-align: center;
 }
 
 #filtros select {
