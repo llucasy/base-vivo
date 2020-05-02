@@ -28,7 +28,7 @@ table {
 
 td {
   text-align: center;
-  word-wrap: break-word;
+  word-break: break-all;
 }
 
 tr:nth-child(even) {
@@ -95,7 +95,7 @@ header a {
   width: 18%;
   margin-top: 10px;
   outline: 1px solid white;
-  text-align: right;
+  text-align: left;
 }
 
 #filtros h1 {

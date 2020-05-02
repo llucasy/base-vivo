@@ -8,7 +8,7 @@
     <header>
     <div id="header">
       <h1><a href="/" >Gestão de linhas</a></h1>
-      <p>Linhas cadastradas no sistema</p>
+      <p>Linhas cadastradas no sistema, usuário: <%= login %> <a href="/login">Sair</a></p>
     </div>
     <form action="/" method="GET">
     <div id="divPesquisa">
@@ -36,20 +36,20 @@
           <td colspan="7">Nenhum resultado encontrado.</td>
         </tr>
 <% } else {
-  docs.forEach(function(customer){ %>
+  docs.forEach(function(linhasgestao){ %>
     <tr class="contRegistro"> 
-      <td><a href="/new/<%= customer._id %>"><%= customer.linha %></a></td>
-      <td><%= customer.local %></td>
-      <td><%= customer.razao %></td>
+      <td><a href="/new/<%= linhasgestao._id %>"><%= linhasgestao.linha %></a></td>
+      <td><%= linhasgestao.local %></td>
+      <td><%= linhasgestao.razao %></td>
       <td>
         
-        <%= customer.plano %>
+        <%= linhasgestao.plano %>
 
-        <!-- <a href="/delete/<%= customer._id %>" onclick="return confirm('Tem certeza?');">Excluir</a> -->
+        <!-- <a href="/delete/<%= linhasgestao._id %>" onclick="return confirm('Tem certeza?');">Excluir</a> -->
       </td>
-      <td><%= customer.status %></td>
-      <td><%= customer.grupo %></td>
-      <td><%= customer.obs %></td>
+      <td><%= linhasgestao.status %></td>
+      <td><%= linhasgestao.grupo %></td>
+      <td><%= linhasgestao.obs %></td>
     </tr>
  <% })
 } %>
@@ -77,7 +77,7 @@
         <option>Virtual</option>
         <option>-</option>
         <option value="Estoque_BBA">Estoque BBA</option>
-        <option value="Com_Colaborador">Com colaborador</option>
+        <option value="Com_colaborador">Com colaborador</option>
       </select>
       </label><br><br>
       <label>Razão Social
@@ -89,7 +89,7 @@
         <option>KINEA_INVESTIMENTOS</option>
         <option>ITAUSEG_SAUDE</option>
         <option>ITAU_VIDA_PREVIDENCIA</option>
-        <option>ITAU_UNIBANCOS.A.</option>
+        <option>ITAU_UNIBANCO</option>
         <option>ITAU_UNIBANCO_HOLDING</option>
         <option>ITAU_SEGUROS</option>
         <option>ITAU_CORRETORA_VALORES</option>
@@ -98,7 +98,7 @@
         <option>HIPERCARD_BCO_MULTIPLO</option>
         <option>FUNDACAO_SAUDE_ITAU</option>
         <option>FUND_ITAU_CLUBE</option>
-        <option>FINANC_ITAU_CBD_S/A</option>
+        <option>FINANC_ITAU_CBD</option>
         <option>BANCO_ITAUCARD</option>
         <option>BANCO_ITAU_CONSIGNADO</option>
       </select>
@@ -109,10 +109,10 @@
         <option>Smart2GB</option>
         <option>Smart5GB</option>
         <option>Dados3GB</option>
+        <option>Dados5GB</option>
         <option>Dados10GB</option>
         <option>SmartVoz</option>
-        <option>FLEX</option>
-        <option>BOX</option>
+        <option>BOX100GB</option>
         <option>TORPEDO</option>
         <option>Smart10GB</option>
         <option>Smart25GB</option>
@@ -123,10 +123,16 @@
         <option></option>
         <option>ATIVO</option>
         <option>DESATIVO</option>
-        <option>PERDA/ROUBO</option>
+        <option>PERDA_ROUBO</option>
       </select>
       </label><br><br>
-      <label>Grupo</label><br><br>
+      <label>Grupo
+      <select name="grupo">
+        <option></option>
+        <option>-</option>
+        <option>Cons.Assesoria</option>
+      </select>
+      </label><br><br>
     </div>
     </aside>
   </form>

@@ -15,31 +15,31 @@ mongoClient
 
 function findAll(item, callback) {
   global.conn
-    .collection("customers")
+    .collection("linhasgestao")
     .find(item)
     .limit(30)
     .toArray(callback);
 }
 
 function insert(customer, callback) {
-  global.conn.collection("customers").insert(customer, callback);
+  global.conn.collection("linhasgestao").insert(customer, callback);
 }
 
 function deleteOne(id, callback) {
   global.conn
-    .collection("customers")
+    .collection("linhasgestao")
     .deleteOne({ _id: new ObjectId(id) }, callback);
 }
 
 function findOne(id, callback) {
   global.conn
-    .collection("customers")
+    .collection("linhasgestao")
     .findOne({ _id: new ObjectId(id) }, callback);
 }
 
 function updateOne(id, item, callback) {
   global.conn
-    .collection("customers")
+    .collection("linhasgestao")
     .updateOne(
       { _id: new ObjectId(id) },
       { $set: { nome: item.nome, idade: item.idade, uf: item.uf } },
@@ -48,7 +48,7 @@ function updateOne(id, item, callback) {
 }
 
 function contar(item, callback) {
-  global.conn.collection("customers").countDocuments(item, {}, callback);
+  global.conn.collection("linhasgestao").countDocuments(item, {}, callback);
 }
 
 module.exports = { findAll, insert, deleteOne, findOne, updateOne, contar };

@@ -3,12 +3,20 @@ var router = express.Router();
 
 /* GET home page. */
 router.get("/", function(req, res, next) {
-  
-  let pesq = {}
-  let local = {}
-  let razao = {}
-  let plano = {}
-  let status = {}
+  var sess = req.session;
+
+  if (!sess.login) {
+    res.redirect("/login");
+  }
+
+  let login = sess.login;
+
+  let pesq = {};
+  let local = {};
+  let razao = {};
+  let plano = {};
+  let status = {};
+  let grupo = {};
 
   if (req.query.pesqCamp) {
     let re = new RegExp(`\\b${req.query.pesqCamp}`);
@@ -31,7 +39,11 @@ router.get("/", function(req, res, next) {
     status = { status: req.query.status };
   }
 
-  let item = Object.assign(pesq, local, razao, plano, status);
+  if (req.query.grupo) {
+    grupo = { grupo: req.query.grupo };
+  }
+
+  let item = Object.assign(pesq, local, razao, plano, status, grupo);
 
   global.db.findAll(item, (e, docs) => {
     if (e) {
@@ -42,7 +54,7 @@ router.get("/", function(req, res, next) {
       if (err) {
         console.log(err);
       }
-      res.render("index", { docs, contaRegistro });
+      res.render("index", { docs, contaRegistro, login });
     });
   });
 });
