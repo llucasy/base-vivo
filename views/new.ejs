@@ -1,34 +1,158 @@
 <!DOCTYPE html>
 <html>
 <head>    
-    <title>CRUD de Clientes</title>
-    <link rel="stylesheet" href="/stylesheets/style.css" /> 
+    <title><%= linhasgestao.linha %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/new.css" /> 
 </head> 
-<body>  
-    <h1><%= title %></h1>  
-    <p>Preencha os dados abaixo para salvar o cliente.</p>  
+<body> 
+    <header> 
+    <h1><%= title %><%= linhasgestao.linha %></h1>  
+    <p>Altere somente o que precisar e deixe o resto como está, em branco. <b>Atenção na hora de alterar!</b></p>  
+    </header>
     <form action="/new" method="POST" id="formAlterar">    
-        <p>        
-            <label>Nome: <input type="text" name="nome" value="<%= customer.nome %>" /></label>    
-        </p>    
-        <p>        
-            <label>Idade: <input type="number" name="idade" value="<%= customer.idade %>" /></label>    
-        </p>    
-        <p>      
-            <label>UF:   
-                <select name="uf" value="<%= customer.uf %>">                
-                    <option>RS</option>                
-                    <option>SC</option>                
-                    <option>PR</option>
-                    <option>SP</option>                
-                    <!-- coloque os estados que quiser -->            
-                </select> 
-            </label>    
-        </p>    
-        <p>
-            <input type="hidden" name="id" value="<%= customer._id %>" />        
-            <a href="/">Cancelar</a> | <input type="submit" value="Salvar" />    
-        </p>  
-    </form> 
+        <div>        
+            <label><p> <span class="titulo"> Local: </span> <%= linhasgestao.local %> </p><br>
+                <select name="local">
+                        <option></option>
+                        <option value="Estoque_CT">Estoque CT</option>
+                        <option>Virtual</option>
+                        <option>-</option>
+                        <option value="Estoque_BBA">Estoque BBA</option>
+                        <option value="Com_colaborador">Com colaborador</option>
+                </select>
+            </label>
+        </div>
+        <div>
+            <label><span class="titulo"> Razão Social: </span> <%= linhasgestao.razao %> <br>
+                <select name="razao">
+                        <option></option>
+                        <option>REDECARD</option>
+                        <option>LUIZACRED</option>
+                        <option>KINEA_PRIVATE_EQUITY</option>
+                        <option>KINEA_INVESTIMENTOS</option>
+                        <option>ITAUSEG_SAUDE</option>
+                        <option>ITAU_VIDA_PREVIDENCIA</option>
+                        <option>ITAU_UNIBANCO</option>
+                        <option>ITAU_UNIBANCO_HOLDING</option>
+                        <option>ITAU_SEGUROS</option>
+                        <option>ITAU_CORRETORA_VALORES</option>
+                        <option>ITAU_CORRETORA_SEGUROS</option>
+                        <option>ICARROS_LTDA</option>
+                        <option>HIPERCARD_BCO_MULTIPLO</option>
+                        <option>FUNDACAO_SAUDE_ITAU</option>
+                        <option>FUND_ITAU_CLUBE</option>
+                        <option>FINANC_ITAU_CBD</option>
+                        <option>BANCO_ITAUCARD</option>
+                        <option>BANCO_ITAU_CONSIGNADO</option>
+                </select>
+            </label>
+        </div>
+        <div>
+            <label><span class="titulo"> Plano: </span> <%= linhasgestao.plano %> <br>
+                <select name="plano">
+                        <option></option>
+                        <option>Smart2GB</option>
+                        <option>Smart5GB</option>
+                        <option>Dados3GB</option>
+                        <option>Dados5GB</option>
+                        <option>Dados10GB</option>
+                        <option>SmartVoz</option>
+                        <option>BOX100GB</option>
+                        <option>TORPEDO</option>
+                        <option>Smart10GB</option>
+                        <option>Smart25GB</option>
+                </select>
+            </label>
+        </div>
+        <div>
+            <label><span class="titulo"> Status: </span><%= linhasgestao.status %> <br>
+                <select name="status">
+                    <option></option>
+                        <option>ATIVO</option>
+                        <option>DESATIVO</option>
+                        <option>PERDA_ROUBO</option>
+                </select>
+            </label>
+        </div>
+        <div>
+            <label><span class="titulo"> Extra: </span> <%= linhasgestao.extra %> <br>
+                <select name="extra" disabled>
+                        <option></option>
+                        <option>BloqDevolucao</option>
+                        <option>BloqEstoque</option>
+                        <option>MapRedDesativo</option>
+                        <option>MapRedPerdaRoubo</option>
+                        <option>MapRedNaoBloq</option>
+                </select>
+            </label>
+        </div>
+        <div>
+            <label><span class="titulo"> Grupo: </span> <%= linhasgestao.grupo %> <br>
+                <select name="grupo">
+                    <option></option>
+                    <option>-</option>
+                        <option>EMP4</option>
+                        <option>ExpansaoAssessoria</option>
+                        <option>ExpansaoPersonalite</option>
+                        <option>ExpansaoRedePri2</option>
+                        <option>ExpansaoRedePri3</option>
+                        <option>HunterEMP2e3</option>
+                        <option>ProjetoSeguros</option>
+                        <option>ProjetoHunter</option>
+                        <option>ProjetoAgro</option>
+                        <option>ProjetoRedecard</option>
+                </select>
+            </label>
+        </div>
+        <div>
+            <label><span class="titulo"> OBS: </span> <%= linhasgestao.obs %> <br>
+            <textarea maxlength="60" name="obs" rows="3" cols="28" placeholder="Digite uma observação sucinta..."></textarea></label>
+        </div>
+        <div>
+            <label><span class="titulo"> Motivo: </span> <%= linhasgestao.motivo %> <br>
+            <textarea required maxlength="60" name="motivo" rows="3" cols="28" placeholder="Digite de forma breve o motivo da sua alteração..."></textarea></label>
+        </div>
+        <div>
+            <label><span class="titulo"> Bloqueio Gestão: </span> <%= linhasgestao.bloqGestao %> <br>
+                <select name="bloqGestao">
+                    <option></option>
+                    <option value="d">Desbloqueado</option>
+                    <option value="b">Bloqueado</option>
+                </select>
+            </label>
+        </div>     
+        <div id="fim">
+            <input type="hidden" name="id" value="<%= linhasgestao._id %>" />        
+            <a href="#" onclick="window.history.back()">Voltar</a> | <input type="submit" value="Salvar alterações" />    
+        </div>  
+    </form>
+    <section> 
+        <table>
+            <thead>
+                <tr>
+                <td>Usuario</td>
+                <td>Alterações</td>
+                <td>Data</td>
+                </tr>
+            </thead>
+            <tbody>
+        <% if(!linhasgestao.log || linhasgestao.log.length == 0) { %>
+                <tr>
+                <td colspan="3">Nenhuma LOG registrada ainda :(</td>
+                </tr>
+        <% } else {
+        linhasgestao.log.forEach(function(log){ %>
+            <tr> 
+            <td><%= log.usuario %></td>
+            <td><%= log.registro %></td>
+            <td><%= log.data %></td>
+            </tr>
+        <% })
+        } %>
+            </tbody>
+        </table>
+    </section>
+    <script src="/javascript/new.js" ></script>
 </body> 
 </html>

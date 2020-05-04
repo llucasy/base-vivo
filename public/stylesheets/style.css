@@ -1,10 +1,9 @@
-@import url("/stylesheets/new.css");
-
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color: #000;
   color: #fff;
+  padding-top: 30px;
 }
 
 a {
@@ -28,7 +27,7 @@ table {
 
 td {
   text-align: center;
-  word-break: break-all;
+  word-break: break-word;
 }
 
 tr:nth-child(even) {
@@ -60,11 +59,18 @@ tfoot tr td a {
 header {
   width: 80%;
   height: 100px;
-  align-content: bottom;
 }
 
 header a {
   color: white;
+}
+
+#colunaLinha {
+  width: 10%;
+}
+
+#colunaObs {
+  width: 15%;
 }
 
 #header {
@@ -84,9 +90,10 @@ header a {
 #dica {
   float: right;
   width: 18%;
-  background-color: Khaki;
-  color: red;
+  background-color: white;
+  color: black;
   padding: 5px;
+  outline: 2px solid red;
 }
 
 #filtros {
@@ -96,6 +103,8 @@ header a {
   margin-top: 10px;
   outline: 1px solid white;
   text-align: left;
+  background: LightSteelBlue;
+  color: black;
 }
 
 #filtros h1 {
@@ -103,5 +112,13 @@ header a {
 }
 
 #filtros select {
-  width: 50%;
+  width: 100%;
+}
+
+#filtros label {
+  font-weight: bold;
+}
+
+#filtros input {
+  width: 98%;
 }

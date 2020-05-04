@@ -13,11 +13,11 @@ mongoClient
   .then(conn => (global.conn = conn.db("workshop")))
   .catch(err => console.log(err));
 
-function findAll(item, callback) {
+function findAll(limit, item, callback) {
   global.conn
     .collection("linhasgestao")
     .find(item)
-    .limit(30)
+    .limit(limit)
     .toArray(callback);
 }
 
@@ -38,13 +38,13 @@ function findOne(id, callback) {
 }
 
 function updateOne(id, item, callback) {
-  global.conn
-    .collection("linhasgestao")
-    .updateOne(
-      { _id: new ObjectId(id) },
-      { $set: { nome: item.nome, idade: item.idade, uf: item.uf } },
-      callback
-    );
+  global.conn.collection("linhasgestao").updateOne(
+    { _id: new ObjectId(id) },
+    {
+      $set: item
+    },
+    callback
+  );
 }
 
 function contar(item, callback) {

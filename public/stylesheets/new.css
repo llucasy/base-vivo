@@ -1,5 +1,67 @@
+header {
+  text-align: center;
+}
+
 #formAlterar {
-  background-color: #fff;
   color: black;
-  margin: 20px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  width: 20%;
+  min-height: 350px;
+  padding: 10px;
+  background: LightSteelBlue;
+  float: left;
+}
+
+#formAlterar a {
+  color: blue;
+}
+
+#formAlterar p {
+  display: inline;
+}
+
+.titulo {
+  font-weight: bold;
+}
+
+div {
+  margin: 5px;
+  word-break: break-word;
+}
+
+:disabled {
+  background-color: gainsboro;
+}
+
+textarea {
+  color: blue;
+}
+
+::placeholder {
+  color: midnightblue;
+}
+
+select {
+  width: 30ch;
+}
+
+#fim {
+  clear: both;
+}
+
+section {
+  float: left;
+  width: 60%;
+  height: 475px;
+  text-align: center;
+  margin-left: 10px;
+  overflow: auto;
+}
+
+section h1 {
+  text-decoration: underline;
+}
+
+section table {
+  margin-bottom: 5px;
 }

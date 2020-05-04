@@ -21,13 +21,13 @@
     <table>
       <thead>
         <tr>
-          <td>Linha</td>
+          <td id="colunaLinha">Linha</td>
           <td>Local</td>
           <td>Razão Social</td>
           <td>Plano</td>
           <td>Status</td>
           <td>Grupo</td>
-          <td>OBS</td>
+          <td id="colunaObs">OBS</td>
         </tr>
       </thead>
       <tbody>
@@ -65,12 +65,11 @@
     </main>
     <aside>
     <div id="dica">
-      <p> Clique no número da linha para exibir mais detalhes. </p>
-      <p> Escolha os filtros abaixo e em seguida clique em pesquisar. </p>
+      <p> Escolha os filtros abaixo e em seguida clique em pesquisar. Clique no número da linha para exibir mais detalhes. </p>
     </div>
     <div id="filtros">
       <h1>Filtros</h1>
-      <label>Local
+      <label>Local:
       <select name="local">
         <option></option>
         <option value="Estoque_CT">Estoque CT</option>
@@ -80,7 +79,7 @@
         <option value="Com_colaborador">Com colaborador</option>
       </select>
       </label><br><br>
-      <label>Razão Social
+      <label>Razão Social:
       <select name="razao">
         <option></option>
         <option>REDECARD</option>
@@ -103,7 +102,7 @@
         <option>BANCO_ITAU_CONSIGNADO</option>
       </select>
       </label><br><br>
-      <label>Plano
+      <label>Plano:
       <select name="plano">
         <option></option>
         <option>Smart2GB</option>
@@ -118,7 +117,7 @@
         <option>Smart25GB</option>
       </select>
       </label><br><br>
-      <label>Status
+      <label>Status:
       <select name="status">
         <option></option>
         <option>ATIVO</option>
@@ -126,13 +125,35 @@
         <option>PERDA_ROUBO</option>
       </select>
       </label><br><br>
-      <label>Grupo
+      <label>Grupo:
       <select name="grupo">
         <option></option>
         <option>-</option>
-        <option>Cons.Assesoria</option>
+        <option>EMP4</option>
+        <option>ExpansaoAssessoria</option>
+        <option>ExpansaoPersonalite</option>
+        <option>ExpansaoRedePri2</option>
+        <option>ExpansaoRedePri3</option>
+        <option>HunterEMP2e3</option>
+        <option>ProjetoSeguros</option>
+        <option>ProjetoHunter</option>
+        <option>ProjetoAgro</option>
+        <option>ProjetoRedecard</option>
       </select>
       </label><br><br>
+      <label>Extra:
+        <select name="extra">
+          <option></option>
+          <option>BloqDevolucao</option>
+          <option>BloqEstoque</option>
+          <option>MapRedDesativo</option>
+          <option>MapRedPerdaRoubo</option>
+          <option>MapRedNaoBloq</option>
+        </select>
+        </label><br><br>
+        <label>Limite de resultados:
+          <input type="number" name="limit" max="500">
+        </label><br><br>
     </div>
     </aside>
   </form>

@@ -10,6 +10,7 @@ router.get("/", function(req, res, next) {
   }
 
   let login = sess.login;
+  let limit = 30;
 
   let pesq = {};
   let local = {};
@@ -17,6 +18,11 @@ router.get("/", function(req, res, next) {
   let plano = {};
   let status = {};
   let grupo = {};
+  let extra = {};
+
+  if (req.query.limit) {
+    limit = Number(req.query.limit);
+  }
 
   if (req.query.pesqCamp) {
     let re = new RegExp(`\\b${req.query.pesqCamp}`);
@@ -43,9 +49,13 @@ router.get("/", function(req, res, next) {
     grupo = { grupo: req.query.grupo };
   }
 
-  let item = Object.assign(pesq, local, razao, plano, status, grupo);
+  if (req.query.extra) {
+    extra = { extra: req.query.extra };
+  }
 
-  global.db.findAll(item, (e, docs) => {
+  let item = Object.assign(pesq, local, razao, plano, status, grupo, extra);
+
+  global.db.findAll(limit, item, (e, docs) => {
     if (e) {
       return console.log(e);
     }
