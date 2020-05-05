@@ -21,15 +21,15 @@ function findAll(limit, item, callback) {
     .toArray(callback);
 }
 
-function insert(customer, callback) {
-  global.conn.collection("linhasgestao").insert(customer, callback);
-}
+// function insert(linhasgestao, callback) {
+//   global.conn.collection("linhasgestao").insert(linhasgestao, callback);
+// }
 
-function deleteOne(id, callback) {
-  global.conn
-    .collection("linhasgestao")
-    .deleteOne({ _id: new ObjectId(id) }, callback);
-}
+// function deleteOne(id, callback) {
+//   global.conn
+//     .collection("linhasgestao")
+//     .deleteOne({ _id: new ObjectId(id) }, callback);
+// }
 
 function findOne(id, callback) {
   global.conn
@@ -51,4 +51,10 @@ function contar(item, callback) {
   global.conn.collection("linhasgestao").countDocuments(item, {}, callback);
 }
 
-module.exports = { findAll, insert, deleteOne, findOne, updateOne, contar };
+function log(id, logs, callback) {
+  global.conn.collection("linhasgestao").update(
+    { _id: new ObjectId(id) }, { $push: { log: { $each: [logs], $sort: { data: -1}}}}, callback
+  )
+}
+
+module.exports = { findAll, findOne, updateOne, contar, log };

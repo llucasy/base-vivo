@@ -54,6 +54,28 @@ router.post("/", function(req, res, next) {
         }
         break;
 
+        case process.env.FABIO_L:
+        if (req.body.senha === process.env.FABIO_S) {
+          sess.login = req.body.login;
+          message = "";
+          res.redirect("/");
+        } else {
+          message = "Senha errada";
+          res.render("login", { message });
+        }
+        break;
+
+        case process.env.LUCAS_L:
+        if (req.body.senha === process.env.LUCAS_S) {
+          sess.login = req.body.login;
+          message = "";
+          res.redirect("/");
+        } else {
+          message = "Senha errada";
+          res.render("login", { message });
+        }
+        break;
+
     default:
       message = "Usuario não existe";
       res.render("login", { message });

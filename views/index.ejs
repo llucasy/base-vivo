@@ -13,7 +13,7 @@
     <form action="/" method="GET">
     <div id="divPesquisa">
       <label for="pesquisa">Pesquisar linha:</label>
-      <input type="search" name="pesqCamp" maxlength="11" id="pesquisa">
+      <input type="search" name="pesqCamp" maxlength="11" id="pesquisa" value="<%= valorPesquisado %>">
       <input type="submit" value="Pesquisar" id="btnPesquisa"/>
     </div>
     </header>
@@ -72,87 +72,87 @@
       <label>Local:
       <select name="local">
         <option></option>
-        <option value="Estoque_CT">Estoque CT</option>
-        <option>Virtual</option>
-        <option>-</option>
-        <option value="Estoque_BBA">Estoque BBA</option>
-        <option value="Com_colaborador">Com colaborador</option>
+        <option value="Estoque_CT" <% if (local.local == 'Estoque_CT') { %> selected <% } %>>Estoque CT</option>
+        <option <% if (local.local == 'Virtual') { %> selected <% } %>>Virtual</option>
+        <option <% if (local.local == '-') { %> selected <% } %>>-</option>
+        <option value="Estoque_BBA" <% if (local.local == 'Estoque_BBA') { %> selected <% } %>>Estoque BBA</option>
+        <option value="Com_colaborador" <% if (local.local == 'Com_colaborador') { %> selected <% } %>>Com colaborador</option>
       </select>
       </label><br><br>
       <label>Razão Social:
       <select name="razao">
         <option></option>
-        <option>REDECARD</option>
-        <option>LUIZACRED</option>
-        <option>KINEA_PRIVATE_EQUITY</option>
-        <option>KINEA_INVESTIMENTOS</option>
-        <option>ITAUSEG_SAUDE</option>
-        <option>ITAU_VIDA_PREVIDENCIA</option>
-        <option>ITAU_UNIBANCO</option>
-        <option>ITAU_UNIBANCO_HOLDING</option>
-        <option>ITAU_SEGUROS</option>
-        <option>ITAU_CORRETORA_VALORES</option>
-        <option>ITAU_CORRETORA_SEGUROS</option>
-        <option>ICARROS_LTDA</option>
-        <option>HIPERCARD_BCO_MULTIPLO</option>
-        <option>FUNDACAO_SAUDE_ITAU</option>
-        <option>FUND_ITAU_CLUBE</option>
-        <option>FINANC_ITAU_CBD</option>
-        <option>BANCO_ITAUCARD</option>
-        <option>BANCO_ITAU_CONSIGNADO</option>
+        <option <% if (razao.razao == 'REDECARD') { %> selected <% } %> >REDECARD</option>
+        <option <% if (razao.razao == 'LUIZACRED') { %> selected <% } %> >LUIZACRED</option>
+        <option <% if (razao.razao == 'KINEA_PRIVATE_EQUITY') { %> selected <% } %> >KINEA_PRIVATE_EQUITY</option>
+        <option <% if (razao.razao == 'KINEA_INVESTIMENTOS') { %> selected <% } %> >KINEA_INVESTIMENTOS</option>
+        <option <% if (razao.razao == 'ITAUSEG_SAUDE') { %> selected <% } %> >ITAUSEG_SAUDE</option>
+        <option <% if (razao.razao == 'ITAU_VIDA_PREVIDENCIA') { %> selected <% } %> >ITAU_VIDA_PREVIDENCIA</option>
+        <option <% if (razao.razao == 'ITAU_UNIBANCO') { %> selected <% } %> >ITAU_UNIBANCO</option>
+        <option <% if (razao.razao == 'ITAU_UNIBANCO_HOLDING') { %> selected <% } %> >ITAU_UNIBANCO_HOLDING</option>
+        <option <% if (razao.razao == 'ITAU_SEGUROS') { %> selected <% } %> >ITAU_SEGUROS</option>
+        <option <% if (razao.razao == 'ITAU_CORRETORA_VALORES') { %> selected <% } %> >ITAU_CORRETORA_VALORES</option>
+        <option <% if (razao.razao == 'ITAU_CORRETORA_SEGUROS') { %> selected <% } %> >ITAU_CORRETORA_SEGUROS</option>
+        <option <% if (razao.razao == 'ICARROS_LTDA') { %> selected <% } %> >ICARROS_LTDA</option>
+        <option <% if (razao.razao == 'HIPERCARD_BCO_MULTIPLO') { %> selected <% } %> >HIPERCARD_BCO_MULTIPLO</option>
+        <option <% if (razao.razao == 'FUNDACAO_SAUDE_ITAU') { %> selected <% } %> >FUNDACAO_SAUDE_ITAU</option>
+        <option <% if (razao.razao == 'FUND_ITAU_CLUBE') { %> selected <% } %> >FUND_ITAU_CLUBE</option>
+        <option <% if (razao.razao == 'FINANC_ITAU_CBD') { %> selected <% } %> >FINANC_ITAU_CBD</option>
+        <option <% if (razao.razao == 'BANCO_ITAUCARD') { %> selected <% } %> >BANCO_ITAUCARD</option>
+        <option <% if (razao.razao == 'BANCO_ITAU_CONSIGNADO') { %> selected <% } %> >BANCO_ITAU_CONSIGNADO</option>
       </select>
       </label><br><br>
       <label>Plano:
       <select name="plano">
         <option></option>
-        <option>Smart2GB</option>
-        <option>Smart5GB</option>
-        <option>Dados3GB</option>
-        <option>Dados5GB</option>
-        <option>Dados10GB</option>
-        <option>SmartVoz</option>
-        <option>BOX100GB</option>
-        <option>TORPEDO</option>
-        <option>Smart10GB</option>
-        <option>Smart25GB</option>
+        <option <% if (plano.plano == 'Smart2GB') { %> selected <% } %> >Smart2GB</option>
+        <option <% if (plano.plano == 'Smart5GB') { %> selected <% } %> >Smart5GB</option>
+        <option <% if (plano.plano == 'Dados3GB') { %> selected <% } %> >Dados3GB</option>
+        <option <% if (plano.plano == 'Dados5GB') { %> selected <% } %> >Dados5GB</option>
+        <option <% if (plano.plano == 'Dados10GB') { %> selected <% } %> >Dados10GB</option>
+        <option <% if (plano.plano == 'SmartVoz') { %> selected <% } %> >SmartVoz</option>
+        <option <% if (plano.plano == 'BOX100GB') { %> selected <% } %> >BOX100GB</option>
+        <option <% if (plano.plano == 'TORPEDO') { %> selected <% } %> >TORPEDO</option>
+        <option <% if (plano.plano == 'Smart10GB') { %> selected <% } %> >Smart10GB</option>
+        <option <% if (plano.plano == 'Smart25GB') { %> selected <% } %> >Smart25GB</option>
       </select>
       </label><br><br>
       <label>Status:
       <select name="status">
         <option></option>
-        <option>ATIVO</option>
-        <option>DESATIVO</option>
-        <option>PERDA_ROUBO</option>
+        <option <% if (status.status == 'ATIVO') { %> selected <% } %> >ATIVO</option>
+        <option <% if (status.status == 'DESATIVO') { %> selected <% } %> >DESATIVO</option>
+        <option <% if (status.status == 'PERDA_ROUBO') { %> selected <% } %> >PERDA_ROUBO</option>
       </select>
       </label><br><br>
       <label>Grupo:
       <select name="grupo">
         <option></option>
-        <option>-</option>
-        <option>EMP4</option>
-        <option>ExpansaoAssessoria</option>
-        <option>ExpansaoPersonalite</option>
-        <option>ExpansaoRedePri2</option>
-        <option>ExpansaoRedePri3</option>
-        <option>HunterEMP2e3</option>
-        <option>ProjetoSeguros</option>
-        <option>ProjetoHunter</option>
-        <option>ProjetoAgro</option>
-        <option>ProjetoRedecard</option>
+        <option <% if (grupo.grupo == '-') { %> selected <% } %> >-</option>
+        <option <% if (grupo.grupo == 'EMP4') { %> selected <% } %> >EMP4</option>
+        <option <% if (grupo.grupo == 'ExpansaoAssessoria') { %> selected <% } %> >ExpansaoAssessoria</option>
+        <option <% if (grupo.grupo == 'ExpansaoPersonalite') { %> selected <% } %> >ExpansaoPersonalite</option>
+        <option <% if (grupo.grupo == 'ExpansaoRedePri2') { %> selected <% } %> >ExpansaoRedePri2</option>
+        <option <% if (grupo.grupo == 'ExpansaoRedePri3') { %> selected <% } %> >ExpansaoRedePri3</option>
+        <option <% if (grupo.grupo == 'HunterEMP2e3') { %> selected <% } %> >HunterEMP2e3</option>
+        <option <% if (grupo.grupo == 'ProjetoSeguros') { %> selected <% } %> >ProjetoSeguros</option>
+        <option <% if (grupo.grupo == 'ProjetoHunter') { %> selected <% } %> >ProjetoHunter</option>
+        <option <% if (grupo.grupo == 'ProjetoAgro') { %> selected <% } %> >ProjetoAgro</option>
+        <option <% if (grupo.grupo == 'ProjetoRedecard') { %> selected <% } %> >ProjetoRedecard</option>
       </select>
       </label><br><br>
       <label>Extra:
         <select name="extra">
           <option></option>
-          <option>BloqDevolucao</option>
-          <option>BloqEstoque</option>
-          <option>MapRedDesativo</option>
-          <option>MapRedPerdaRoubo</option>
-          <option>MapRedNaoBloq</option>
+          <option <% if (extra.extra == 'BloqDevolucao') { %> selected <% } %> >BloqDevolucao</option>
+          <option <% if (extra.extra == 'BloqEstoque') { %> selected <% } %> >BloqEstoque</option>
+          <option <% if (extra.extra == 'MapRedDesativo') { %> selected <% } %>>MapRedDesativo</option>
+          <option <% if (extra.extra == 'MapRedPerdaRoubo') { %> selected <% } %> >MapRedPerdaRoubo</option>
+          <option <% if (extra.extra == 'MapRedNaoBloq') { %> selected <% } %> >MapRedNaoBloq</option>
         </select>
         </label><br><br>
         <label>Limite de resultados:
-          <input type="number" name="limit" max="500">
+          <input type="number" name="limit" max="500" min="1" value="<%= limit %>">
         </label><br><br>
     </div>
     </aside>

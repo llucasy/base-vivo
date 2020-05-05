@@ -14,10 +14,10 @@
           "id": "codesandbox.console"
         },
         {
-          "id": "codesandbox.terminal"
+          "id": "codesandbox.problems"
         },
         {
-          "id": "codesandbox.problems"
+          "id": "codesandbox.terminal"
         }
       ]
     }

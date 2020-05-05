@@ -20,6 +20,8 @@ router.get("/", function(req, res, next) {
   let grupo = {};
   let extra = {};
 
+  let valorPesquisado
+
   if (req.query.limit) {
     limit = Number(req.query.limit);
   }
@@ -27,6 +29,7 @@ router.get("/", function(req, res, next) {
   if (req.query.pesqCamp) {
     let re = new RegExp(`\\b${req.query.pesqCamp}`);
     pesq = { linha: { $regex: re } };
+    valorPesquisado = req.query.pesqCamp
   }
 
   if (req.query.local) {
@@ -64,7 +67,7 @@ router.get("/", function(req, res, next) {
       if (err) {
         console.log(err);
       }
-      res.render("index", { docs, contaRegistro, login });
+      res.render("index", { docs, contaRegistro, login, valorPesquisado, local, razao, plano, status, grupo, extra, limit });
     });
   });
 });

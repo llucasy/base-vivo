@@ -65,3 +65,7 @@ section h1 {
 section table {
   margin-bottom: 5px;
 }
+
+#colunaUsuario {
+  width: 11%;
+}

@@ -131,7 +131,7 @@
         <table>
             <thead>
                 <tr>
-                <td>Usuario</td>
+                <td id="colunaUsuario">Usuario</td>
                 <td>Alterações</td>
                 <td>Data</td>
                 </tr>
@@ -146,7 +146,7 @@
             <tr> 
             <td><%= log.usuario %></td>
             <td><%= log.registro %></td>
-            <td><%= log.data %></td>
+            <td><%= formatarValor(log.data) %></td>
             </tr>
         <% })
         } %>
