@@ -21,7 +21,7 @@
     <table>
       <thead>
         <tr>
-          <td id="colunaLinha">Linha</td>
+          <td>Linha</td>
           <td>Local</td>
           <td>Razão Social</td>
           <td>Plano</td>
@@ -38,7 +38,7 @@
 <% } else {
   docs.forEach(function(linhasgestao){ %>
     <tr class="contRegistro"> 
-      <td><a href="/new/<%= linhasgestao._id %>"><%= linhasgestao.linha %></a></td>
+      <td id="colunaLinha"><a href="/new/<%= linhasgestao._id %>"><%= linhasgestao.linha %></a></td>
       <td><%= linhasgestao.local %></td>
       <td><%= linhasgestao.razao %></td>
       <td>
@@ -123,6 +123,7 @@
         <option <% if (status.status == 'ATIVO') { %> selected <% } %> >ATIVO</option>
         <option <% if (status.status == 'DESATIVO') { %> selected <% } %> >DESATIVO</option>
         <option <% if (status.status == 'PERDA_ROUBO') { %> selected <% } %> >PERDA_ROUBO</option>
+        <option <% if (status.status == 'CANCELADA') { %> selected <% } %> >CANCELADA</option>
       </select>
       </label><br><br>
       <label>Grupo:
@@ -144,17 +145,18 @@
       <label>Extra:
         <select name="extra">
           <option></option>
+          <option <% if (extra.extra == '-') { %> selected <% } %> >-</option>
           <option <% if (extra.extra == 'BloqDevolucao') { %> selected <% } %> >BloqDevolucao</option>
           <option <% if (extra.extra == 'BloqEstoque') { %> selected <% } %> >BloqEstoque</option>
           <option <% if (extra.extra == 'MapRedDesativo') { %> selected <% } %>>MapRedDesativo</option>
           <option <% if (extra.extra == 'MapRedPerdaRoubo') { %> selected <% } %> >MapRedPerdaRoubo</option>
           <option <% if (extra.extra == 'MapRedNaoBloq') { %> selected <% } %> >MapRedNaoBloq</option>
         </select>
-        </label><br><br>
-        <label>Limite de resultados:
-          <input type="number" name="limit" max="500" min="1" value="<%= limit %>">
-        </label><br><br>
-    </div>
+      </label><br><br>
+      <label>Limite de resultados:
+        <input type="number" name="limit" max="500" min="1" value="<%= limit %>">
+      </label><br><br>
+      </div>
     </aside>
   </form>
     <script src="/javascript/index.js"></script>

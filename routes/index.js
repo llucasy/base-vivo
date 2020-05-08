@@ -20,7 +20,7 @@ router.get("/", function(req, res, next) {
   let grupo = {};
   let extra = {};
 
-  let valorPesquisado
+  let valorPesquisado;
 
   if (req.query.limit) {
     limit = Number(req.query.limit);
@@ -29,7 +29,7 @@ router.get("/", function(req, res, next) {
   if (req.query.pesqCamp) {
     let re = new RegExp(`\\b${req.query.pesqCamp}`);
     pesq = { linha: { $regex: re } };
-    valorPesquisado = req.query.pesqCamp
+    valorPesquisado = req.query.pesqCamp;
   }
 
   if (req.query.local) {
@@ -56,7 +56,15 @@ router.get("/", function(req, res, next) {
     extra = { extra: req.query.extra };
   }
 
-  let item = Object.assign(pesq, local, razao, plano, status, grupo, extra);
+  let item = Object.assign(
+    pesq,
+    local,
+    razao,
+    plano,
+    status,
+    grupo,
+    extra,
+  );
 
   global.db.findAll(limit, item, (e, docs) => {
     if (e) {
@@ -67,7 +75,19 @@ router.get("/", function(req, res, next) {
       if (err) {
         console.log(err);
       }
-      res.render("index", { docs, contaRegistro, login, valorPesquisado, local, razao, plano, status, grupo, extra, limit });
+      res.render("index", {
+        docs,
+        contaRegistro,
+        login,
+        valorPesquisado,
+        local,
+        razao,
+        plano,
+        status,
+        grupo,
+        extra,
+        limit
+      });
     });
   });
 });

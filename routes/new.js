@@ -10,6 +10,12 @@ function formatarValor(dados) {
   return moment(dados).utcOffset(-3).calendar();
 }
 
+function tempoRelativo(tempo) {
+  let today = moment().utcOffset(-3)
+  let momento = moment(tempo).utcOffset(-3)
+  return momento.diff(today, 'days')
+}
+
 // router.get('/', function(req, res, next) {
 //     res.render('new', { title: 'Novo Cadastro', linhasgestao: {_id: '', nome: '', idade:0, uf: ''} });
 // });
@@ -30,8 +36,8 @@ router.get("/:id", function(req, res, next) {
     }
 
     res.render("new", {
-      title: "Usuário: " + sess.login + " - Detalhes da linha: ",
-      linhasgestao, formatarValor: formatarValor
+      title: "Detalhes da linha: " + linhasgestao.linha + " - Usuário: " + sess.login,
+      linhasgestao, formatarValor: formatarValor, tempoRelativo: tempoRelativo
     });
   });
 });
@@ -53,6 +59,7 @@ router.post("/", function(req, res, next) {
   let motivo = {};
   let bloqGestao = {};
   let extra = {};
+  let dtBloqGestao = {};
 
   let registro = '';
 
@@ -94,6 +101,11 @@ router.post("/", function(req, res, next) {
   if (req.body.bloqGestao) {
     bloqGestao = { bloqGestao: req.body.bloqGestao };
     registro += 'Bloqueio Gestão: ' + req.body.bloqGestao + ' '
+    if (req.body.bloqGestao === 'Bloqueado') {
+      dtBloqGestao = {dtBloqGestao: new Date()}
+    } else {
+      dtBloqGestao = {dtBloqGestao: ''}
+    }
   }
 
   if (req.body.extra) {
@@ -110,7 +122,8 @@ router.post("/", function(req, res, next) {
     ...obs,
     ...motivo,
     ...bloqGestao,
-    ...extra
+    ...extra,
+    ...dtBloqGestao
   };
 
   let id = req.body.id;

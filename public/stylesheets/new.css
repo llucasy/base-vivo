@@ -1,32 +1,38 @@
 header {
-  text-align: center;
+  width: 100%;
 }
 
-#formAlterar {
-  color: black;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  width: 20%;
+#contadores {
+  float: right;
+  width: 19%;
+  padding-top: 10px;
+}
+
+main {
+  overflow: auto;
+}
+
+#filtros {
+  margin-top: 0;
   min-height: 350px;
-  padding: 10px;
-  background: LightSteelBlue;
-  float: left;
 }
 
-#formAlterar a {
-  color: blue;
-}
-
-#formAlterar p {
+#filtros p {
   display: inline;
+}
+
+#filtros label {
+  font-weight: normal;
+}
+
+#filtros input, button {
+  margin: 1px;
+  width: 100%;
+  font-weight: bold;
 }
 
 .titulo {
   font-weight: bold;
-}
-
-div {
-  margin: 5px;
-  word-break: break-word;
 }
 
 :disabled {
@@ -35,37 +41,13 @@ div {
 
 textarea {
   color: blue;
+  width: 98%;
 }
 
 ::placeholder {
   color: midnightblue;
 }
 
-select {
-  width: 30ch;
-}
-
-#fim {
-  clear: both;
-}
-
-section {
-  float: left;
-  width: 60%;
-  height: 475px;
-  text-align: center;
-  margin-left: 10px;
-  overflow: auto;
-}
-
-section h1 {
-  text-decoration: underline;
-}
-
-section table {
-  margin-bottom: 5px;
-}
-
 #colunaUsuario {
-  width: 11%;
+  word-break: normal;
 }

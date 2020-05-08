@@ -6,12 +6,45 @@
     <link rel="stylesheet" href="/stylesheets/new.css" /> 
 </head> 
 <body> 
-    <header> 
-    <h1><%= title %><%= linhasgestao.linha %></h1>  
-    <p>Altere somente o que precisar e deixe o resto como está, em branco. <b>Atenção na hora de alterar!</b></p>  
+    <header>
+        <div id="header">
+        <h1><%= title %></h1>  
+        <p>Altere somente o que precisar e deixe o resto como está, em branco. <b>Atenção na hora de alterar!</b></p>  
+        </div>
+        <div id="contadores">
+        <p>Bloqueio CR:</p>
+        <p>Bloqueio Gestão: <% if (linhasgestao.bloqGestao == 'Bloqueado') { %> Há <%= tempoRelativo(linhasgestao.dtBloqGestao) %> dia(s) <% } %> </p>
+        </div>
     </header>
-    <form action="/new" method="POST" id="formAlterar">    
-        <div>        
+    <form action="/new" method="POST">
+    <main> 
+        <table>
+            <thead>
+                <tr>
+                <td>Usuario</td>
+                <td>Alterações</td>
+                <td>Data</td>
+                </tr>
+            </thead>
+            <tbody>
+        <% if(!linhasgestao.log || linhasgestao.log.length == 0) { %>
+                <tr>
+                <td colspan="3">Nenhuma LOG registrada ainda :(</td>
+                </tr>
+        <% } else {
+        linhasgestao.log.forEach(function(log){ %>
+            <tr> 
+            <td id="colunaUsuario"><%= log.usuario %></td>
+            <td><%= log.registro %></td>
+            <td><%= formatarValor(log.data) %></td>
+            </tr>
+        <% })
+        } %>
+            </tbody>
+        </table>
+    </main>
+    <aside> 
+        <div id="filtros">
             <label><p> <span class="titulo"> Local: </span> <%= linhasgestao.local %> </p><br>
                 <select name="local">
                         <option></option>
@@ -22,8 +55,6 @@
                         <option value="Com_colaborador">Com colaborador</option>
                 </select>
             </label>
-        </div>
-        <div>
             <label><span class="titulo"> Razão Social: </span> <%= linhasgestao.razao %> <br>
                 <select name="razao">
                         <option></option>
@@ -47,8 +78,6 @@
                         <option>BANCO_ITAU_CONSIGNADO</option>
                 </select>
             </label>
-        </div>
-        <div>
             <label><span class="titulo"> Plano: </span> <%= linhasgestao.plano %> <br>
                 <select name="plano">
                         <option></option>
@@ -64,18 +93,15 @@
                         <option>Smart25GB</option>
                 </select>
             </label>
-        </div>
-        <div>
             <label><span class="titulo"> Status: </span><%= linhasgestao.status %> <br>
                 <select name="status">
                     <option></option>
                         <option>ATIVO</option>
                         <option>DESATIVO</option>
                         <option>PERDA_ROUBO</option>
+                        <option>CANCELADA</option>
                 </select>
             </label>
-        </div>
-        <div>
             <label><span class="titulo"> Extra: </span> <%= linhasgestao.extra %> <br>
                 <select name="extra" disabled>
                         <option></option>
@@ -86,8 +112,6 @@
                         <option>MapRedNaoBloq</option>
                 </select>
             </label>
-        </div>
-        <div>
             <label><span class="titulo"> Grupo: </span> <%= linhasgestao.grupo %> <br>
                 <select name="grupo">
                     <option></option>
@@ -104,55 +128,23 @@
                         <option>ProjetoRedecard</option>
                 </select>
             </label>
-        </div>
-        <div>
             <label><span class="titulo"> OBS: </span> <%= linhasgestao.obs %> <br>
             <textarea maxlength="60" name="obs" rows="3" cols="28" placeholder="Digite uma observação sucinta..."></textarea></label>
-        </div>
-        <div>
             <label><span class="titulo"> Motivo: </span> <%= linhasgestao.motivo %> <br>
             <textarea required maxlength="60" name="motivo" rows="3" cols="28" placeholder="Digite de forma breve o motivo da sua alteração..."></textarea></label>
-        </div>
-        <div>
             <label><span class="titulo"> Bloqueio Gestão: </span> <%= linhasgestao.bloqGestao %> <br>
                 <select name="bloqGestao">
                     <option></option>
-                    <option value="d">Desbloqueado</option>
-                    <option value="b">Bloqueado</option>
+                    <option>Desbloqueado</option>
+                    <option>Bloqueado</option>
                 </select>
             </label>
-        </div>     
-        <div id="fim">
             <input type="hidden" name="id" value="<%= linhasgestao._id %>" />        
-            <a href="#" onclick="window.history.back()">Voltar</a> | <input type="submit" value="Salvar alterações" />    
-        </div>  
-    </form>
-    <section> 
-        <table>
-            <thead>
-                <tr>
-                <td id="colunaUsuario">Usuario</td>
-                <td>Alterações</td>
-                <td>Data</td>
-                </tr>
-            </thead>
-            <tbody>
-        <% if(!linhasgestao.log || linhasgestao.log.length == 0) { %>
-                <tr>
-                <td colspan="3">Nenhuma LOG registrada ainda :(</td>
-                </tr>
-        <% } else {
-        linhasgestao.log.forEach(function(log){ %>
-            <tr> 
-            <td><%= log.usuario %></td>
-            <td><%= log.registro %></td>
-            <td><%= formatarValor(log.data) %></td>
-            </tr>
-        <% })
-        } %>
-            </tbody>
-        </table>
-    </section>
+            <button onclick="window.history.back()">Voltar</button>
+            <input type="submit" value="Salvar alterações" />    
+        </div>
+    </aside>
+</form>
     <script src="/javascript/new.js" ></script>
 </body> 
 </html>
