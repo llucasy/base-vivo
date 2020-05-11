@@ -1,0 +1,78 @@
+header {
+  width: 100%;
+}
+
+#pesquisar {
+  float: right;
+  width: 19%;
+  padding-top: 70px;
+}
+
+#pesquisar input {
+  width: 100%;
+  font-weight: bold;
+}
+
+main {
+  min-height: 484px;
+  overflow: auto;
+}
+
+#filtros {
+  margin-top: 0;
+  min-height: 350px;
+}
+
+#filtros p {
+  display: inline;
+}
+
+#filtros label {
+  font-weight: normal;
+}
+
+#filtros input, button {
+  margin: 1px;
+  width: 100%;
+  font-weight: bold;
+}
+
+.titulo {
+  font-weight: bold;
+}
+
+:disabled {
+  background-color: gainsboro;
+}
+
+textarea {
+  color: blue;
+  width: 98%;
+}
+
+main textarea {
+  color: blue;
+  width: 11ch;
+}
+
+::placeholder {
+  color: midnightblue;
+}
+
+#linhas {
+  width: 20px;
+}
+
+#primeiraLinha:hover {
+  background: unset;
+}
+
+th {
+  position: sticky;
+  top: 2px;
+  background-color:  steelblue;
+}
+
+table {
+  position: relative;
+}

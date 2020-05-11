@@ -13,11 +13,12 @@ mongoClient
   .then(conn => (global.conn = conn.db("workshop")))
   .catch(err => console.log(err));
 
-function findAll(limit, item, callback) {
+function findAll(project, limit, item, callback) {
   global.conn
     .collection("linhasgestao")
     .find(item)
     .limit(limit)
+    .project(project)
     .toArray(callback);
 }
 

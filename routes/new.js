@@ -13,14 +13,9 @@ function formatarValor(dados) {
 function tempoRelativo(tempo) {
   let today = moment().utcOffset(-3)
   let momento = moment(tempo).utcOffset(-3)
-  return momento.diff(today, 'days')
+  return today.diff(momento, 'days')
 }
 
-// router.get('/', function(req, res, next) {
-//     res.render('new', { title: 'Novo Cadastro', linhasgestao: {_id: '', nome: '', idade:0, uf: ''} });
-// });
-
-/* Alterar **/
 router.get("/:id", function(req, res, next) {
   let sess = req.session;
 
@@ -42,7 +37,6 @@ router.get("/:id", function(req, res, next) {
   });
 });
 
-/* POST new page. */
 router.post("/", function(req, res, next) {
   let sess = req.session;
 
@@ -145,9 +139,6 @@ router.post("/", function(req, res, next) {
 
     });
   } else {
-    //  global.db.insert({nome, idade, uf}, (err, result) => {
-    //      if(err) { return console.log(err); }
-    //      res.redirect('/');
 
     res.send("iD não existe, avise o Lucas, o admin do sistema");
   }

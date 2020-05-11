@@ -66,7 +66,9 @@ router.get("/", function(req, res, next) {
     extra,
   );
 
-  global.db.findAll(limit, item, (e, docs) => {
+  let project = { motivo: 0, bloqGestao: 0, log: 0}
+
+  global.db.findAll(project, limit, item, (e, docs) => {
     if (e) {
       return console.log(e);
     }
