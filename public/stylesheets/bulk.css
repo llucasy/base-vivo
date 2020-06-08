@@ -14,8 +14,9 @@ header {
 }
 
 main {
-  min-height: 484px;
+  min-height: 578px;
   overflow: auto;
+  margin-bottom: 20px;
 }
 
 #filtros {
@@ -35,6 +36,10 @@ main {
   margin: 1px;
   width: 100%;
   font-weight: bold;
+}
+
+#filtros input[type=radio] {
+  width: 10%;
 }
 
 .titulo {

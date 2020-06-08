@@ -58,4 +58,14 @@ function log(id, logs, callback) {
   )
 }
 
-module.exports = { findAll, findOne, updateOne, contar, log };
+function logBulk(item, logs, callback) {
+  global.conn.collection("linhasgestao").updateMany(
+    item, { $push: { log: { $each: [logs], $sort: { data: -1}}}}, callback
+  )
+}
+
+function bulk(item, mod, callback) {
+  global.conn.collection('linhasgestao').updateMany(item, {$set: mod}, callback)
+}
+
+module.exports = { findAll, findOne, updateOne, contar, log, logBulk, bulk };

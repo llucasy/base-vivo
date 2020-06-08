@@ -1,6 +1,8 @@
 var express = require("express");
 var router = express.Router();
 
+
+
 router.get("/", function(req, res, next) {
   let sess = req.session;
 
@@ -12,12 +14,14 @@ router.get("/", function(req, res, next) {
   let lista1n = "";
   let lista2n = "";
   let lista3n = "";
+  let str = ''
 
   res.render("bulk", {
     docs,
     lista1n,
     lista2n,
     lista3n,
+    str,
     title: "Pesquisa e alteração em massa - Usuário: " + sess.login
   });
 });
@@ -39,6 +43,7 @@ router.post("/", function(req, res, next) {
   let lista1n = "";
   let lista2n = "";
   let lista3n = "";
+  let linha = { linha: 1 } 
 
   if (req.body.lista1) {
     lista1n = req.body.lista1;
@@ -46,13 +51,13 @@ router.post("/", function(req, res, next) {
   }
 
   if (req.body.lista2) {
-    let requi = req.body.lista2;
-    lista2 = { [requi]: 1 };
+    lista2n = req.body.lista2;
+    lista2 = { [lista2n]: 1 };
   }
 
   if (req.body.lista3) {
-    let requi = req.body.lista3;
-    lista3 = { [requi]: 1 };
+    lista3n = req.body.lista3;
+    lista3 = { [lista3n]: 1 };
   }
 
   let str = req.body.bulkLinhas;
@@ -60,21 +65,24 @@ router.post("/", function(req, res, next) {
 
   item = { linha: { $in: arr } };
 
-  project = { ...lista1, ...lista2, ...lista3 };
+  project = { ...linha, ...lista1, ...lista2, ...lista3 }; 
+
 
   if (req.body.pesquisar) {
+
     global.db.findAll(project, limit, item, (e, docs) => {
       if (e) {
         return console.log(e);
-      }
-
+      }   
+      
       res.render("bulk", {
         docs,
         lista1n,
         lista2n,
         lista3n,
+        str,
         title: "Pesquisa e alteração em massa - Usuário: " + sess.login
-      });
+      })
     });
   }
 
@@ -89,7 +97,12 @@ router.post("/", function(req, res, next) {
   let extra = {};
   let dtBloqGestao = {};
 
-  let registro = "";
+  let registro = '';
+  let registroVisivel = ''
+
+  if (req.body.acao) {
+    registroVisivel += req.body.acao + ' '
+  }  
 
   if (req.body.local) {
     local = { local: req.body.local };
@@ -114,6 +127,7 @@ router.post("/", function(req, res, next) {
   if (req.body.grupo) {
     grupo = { grupo: req.body.grupo };
     registro += "Grupo: " + req.body.grupo + " ";
+    registroVisivel += req.body.grupo + ' '
   }
 
   if (req.body.obs) {
@@ -124,6 +138,7 @@ router.post("/", function(req, res, next) {
   if (req.body.motivo) {
     motivo = { motivo: req.body.motivo };
     registro += "Motivo: " + req.body.motivo + " ";
+    registroVisivel += req.body.motivo
   }
 
   if (req.body.bloqGestao) {
@@ -141,7 +156,7 @@ router.post("/", function(req, res, next) {
     registro += "Extra: " + req.body.extra + " ";
   }
 
-  item = {
+  let mod = {
     ...local,
     ...razao,
     ...plano,
@@ -154,17 +169,15 @@ router.post("/", function(req, res, next) {
     ...dtBloqGestao
   };
 
-  let id = req.body.id;
+  let logs = { usuario: sess.login, registro: registro, registroVisivel: registroVisivel, data: new Date() };
 
-  let logs = { usuario: sess.login, registro: registro, data: new Date() };
-
-  if (id) {
-    global.db.updateOne(id, item, (err, result) => {
+  if (req.body.salvar) {
+    global.db.bulk(item, mod, (err, result) => {
       if (err) {
         return console.log(err);
       }
 
-      global.db.log(id, logs, (err, result) => {
+      global.db.logBulk(item, logs, (err, result) => {
         if (err) {
           return console.log(err);
         }

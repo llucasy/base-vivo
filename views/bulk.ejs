@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="/stylesheets/bulk.css" /> 
 </head> 
 <body>
-    <form action="/bulk" method="POST"> 
+<form action="/bulk" method="POST"> 
     <header>
         <div id="header">
             <h1><%= title %></h1>  
@@ -21,54 +21,54 @@
             <thead>
                 <tr>
                 <th id="bulkLinhas">Linhas</th>
-                <th>Linha</th>
+                <th class="linha">Linha</th>
                 <th>
                     <select name="lista1">
                         <option></option>
-                        <option>Local</option>
-                        <option>Razão Social</option>
-                        <option>Plano</option>
-                        <option>Status</option>
-                        <option>Extra</option>
-                        <option>Grupo</option>
-                        <option>OBS</option>
-                        <option>Motivo</option>
-                        <option>Bloqueio Gestão</option>
+                        <option <% if (lista1n == 'local') { %> selected <% } %> value="local">Local</option>
+                        <option <% if (lista1n == 'razao') { %> selected <% } %> value="razao">Razão Social</option>
+                        <option <% if (lista1n == 'plano') { %> selected <% } %> value="plano">Plano</option>
+                        <option <% if (lista1n == 'status') { %> selected <% } %> value="status">Status</option>
+                        <option <% if (lista1n == 'extra') { %> selected <% } %> value="extra">Extra</option>
+                        <option <% if (lista1n == 'grupo') { %> selected <% } %> value="grupo">Grupo</option>
+                        <option <% if (lista1n == 'obs') { %> selected <% } %> value="obs">OBS</option>
+                        <option <% if (lista1n == 'motivo') { %> selected <% } %> value="motivo">Motivo</option>
+                        <option <% if (lista1n == 'bloqGestao') { %> selected <% } %> value="bloqGestao">Bloqueio Gestão</option>
                     </select>
                 </th>
                 <th>
                     <select name="lista2">
                         <option></option>
-                        <option>Local</option>
-                        <option>Razão Social</option>
-                        <option>Plano</option>
-                        <option>Status</option>
-                        <option>Extra</option>
-                        <option>Grupo</option>
-                        <option>OBS</option>
-                        <option>Motivo</option>
-                        <option>Bloqueio Gestão</option>
+                        <option <% if (lista2n == 'local') { %> selected <% } %> value="local">Local</option>
+                        <option <% if (lista2n == 'razao') { %> selected <% } %> value="razao">Razão Social</option>
+                        <option <% if (lista2n == 'plano') { %> selected <% } %> value="plano">Plano</option>
+                        <option <% if (lista2n == 'status') { %> selected <% } %> value="status">Status</option>
+                        <option <% if (lista2n == 'extra') { %> selected <% } %> value="extra">Extra</option>
+                        <option <% if (lista2n == 'grupo') { %> selected <% } %> value="grupo">Grupo</option>
+                        <option <% if (lista2n == 'obs') { %> selected <% } %> value="obs">OBS</option>
+                        <option <% if (lista2n == 'motivo') { %> selected <% } %> value="motivo">Motivo</option>
+                        <option <% if (lista2n == 'bloqGestao') { %> selected <% } %> value="bloqGestao">Bloqueio Gestão</option>
                     </select>
                 </th>
                 <th>
                     <select name="lista3">
                         <option></option>
-                        <option>Local</option>
-                        <option>Razão Social</option>
-                        <option>Plano</option>
-                        <option>Status</option>
-                        <option>Extra</option>
-                        <option>Grupo</option>
-                        <option>OBS</option>
-                        <option>Motivo</option>
-                        <option>Bloqueio Gestão</option>
+                        <option <% if (lista3n == 'local') { %> selected <% } %> value="local">Local</option>
+                        <option <% if (lista3n == 'razao') { %> selected <% } %> value="razao">Razão Social</option>
+                        <option <% if (lista3n == 'plano') { %> selected <% } %> value="plano">Plano</option>
+                        <option <% if (lista3n == 'status') { %> selected <% } %> value="status">Status</option>
+                        <option <% if (lista3n == 'extra') { %> selected <% } %> value="extra">Extra</option>
+                        <option <% if (lista3n == 'grupo') { %> selected <% } %> value="grupo">Grupo</option>
+                        <option <% if (lista3n == 'obs') { %> selected <% } %> value="obs">OBS</option>
+                        <option <% if (lista3n == 'motivo') { %> selected <% } %> value="motivo">Motivo</option>
+                        <option <% if (lista3n == 'bloqGestao') { %> selected <% } %> value="bloqGestao">Bloqueio Gestão</option>
                     </select>
                 </th>
                 </tr>
             </thead>
             <tbody>
             <tr id="primeiraLinha"> 
-                <td id="linhas" rowspan="501"><textarea required maxlength="5999" name="bulkLinhas" rows="500" cols="11"></textarea></td>
+                <td id="linhas" rowspan="501"><textarea required maxlength="5999" name="bulkLinhas" rows="500" cols="11" ><%= str %></textarea></td>
             </tr>
         <% if(!docs || docs.length == 0) { %>
                 <tr>
@@ -78,17 +78,15 @@
           docs.forEach(function(linhasgestao){ %>
             <tr class="contRegistro"> 
               <td id="colunaLinha"><a href="/new/<%= linhasgestao._id %>"><%= linhasgestao.linha %></a></td>
-              <td><%= linhasgestao.lista1n %></td>
-              <td><%= linhasgestao.lista2n %></td>
-              <td><%= linhasgestao.lista3n %></td>
+              <td><%= linhasgestao[lista1n] %></td>
+              <td><%= linhasgestao[lista2n] %></td>
+              <td><%= linhasgestao[lista3n] %></td>
             </tr>
          <% })
         } %>
             </tbody>
         </table>
     </main>
-    </form>
-    <form action="/bulk" method="POST"> 
     <aside> 
         <div id="filtros">
             <label><p> <span class="titulo"> Local: </span> </p><br>
@@ -177,16 +175,25 @@
             <label><span class="titulo"> OBS: </span> <br>
             <textarea maxlength="60" name="obs" rows="3" cols="28" placeholder="Digite uma observação sucinta..."></textarea></label>
             <label><span class="titulo"> Motivo: </span> <br>
-            <textarea required maxlength="60" name="motivo" rows="3" cols="28" placeholder="Digite de forma breve o motivo da sua alteração..."></textarea></label>
+            <textarea maxlength="60" name="motivo" rows="3" cols="28" placeholder="Digite de forma breve o motivo da sua alteração..."></textarea></label>
             <label><span class="titulo"> Bloqueio Gestão: </span> <br>
                 <select name="bloqGestao">
                     <option></option>
                     <option>Desbloqueado</option>
                     <option>Bloqueado</option>
                 </select>
-            </label>
-            <input type="hidden" name="id" value=" " />        
-            <a href="/">Voltar</a>
+            <input type="radio" id="Aquisição" name="acao" value="Aquisição">
+            <label for="Aquisição">Aquisição</label><br>
+            <input type="radio" id="Devolução" name="acao" value="Devolução">
+            <label for="Devolução">Devolução</label><br>
+            <input type="radio" id="Regularização" name="acao" value="Regularização">
+            <label for="Regularização">Regularização</label><br>
+            <input type="radio" id="Adequação_de_plano" name="acao" value="Adequação_de_plano">
+            <label for="Adequação_de_plano">Adequação_de_plano</label><br>
+            <input type="radio" id="Troca_de_CNPJ" name="acao" value="Troca_de_CNPJ">
+            <label for="Troca_de_CNPJ">Troca_de_CNPJ</label><br>
+            </label>     
+            <a href="/"><button type="button">Voltar</button></a>
             <input type="submit" name="salvar" value="Salvar alterações" />    
         </div>
     </aside>

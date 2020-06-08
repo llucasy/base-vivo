@@ -22,7 +22,7 @@
             <thead>
                 <tr>
                 <td>Usuario</td>
-                <td>Alterações</td>
+                <td>Histórico</td>
                 <td>Data</td>
                 </tr>
             </thead>
@@ -35,7 +35,7 @@
         linhasgestao.log.forEach(function(log){ %>
             <tr> 
             <td id="colunaUsuario"><%= log.usuario %></td>
-            <td><%= log.registro %></td>
+            <td><%= log.registroVisivel %></td>
             <td><%= formatarValor(log.data) %></td>
             </tr>
         <% })
@@ -139,6 +139,16 @@
                     <option>Bloqueado</option>
                 </select>
             </label>
+            <input type="radio" id="Aquisição" name="acao" value="Aquisição" required>
+            <label for="Aquisição">Aquisição</label><br>
+            <input type="radio" id="Devolução" name="acao" value="Devolução" required>
+            <label for="Devolução">Devolução</label><br>
+            <input type="radio" id="Regularização" name="acao" value="Regularização" required>
+            <label for="Regularização">Regularização</label><br>
+            <input type="radio" id="Adequação_de_plano" name="acao" value="Adequação_de_plano" required>
+            <label for="Adequação_de_plano">Adequação_de_plano</label><br>
+            <input type="radio" id="Troca_de_CNPJ" name="acao" value="Troca_de_CNPJ" required>
+            <label for="Troca_de_CNPJ">Troca_de_CNPJ</label><br>
             <input type="hidden" name="id" value="<%= linhasgestao._id %>" />        
             <button onclick="window.history.back()">Voltar</button>
             <input type="submit" value="Salvar alterações" />    

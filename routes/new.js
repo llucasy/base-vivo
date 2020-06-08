@@ -56,6 +56,11 @@ router.post("/", function(req, res, next) {
   let dtBloqGestao = {};
 
   let registro = '';
+  let registroVisivel = '';
+
+  if (req.body.acao) {
+    registroVisivel += req.body.acao + ' '
+  }
 
   if (req.body.local) {
     local = { local: req.body.local };
@@ -80,6 +85,7 @@ router.post("/", function(req, res, next) {
   if (req.body.grupo) {
     grupo = { grupo: req.body.grupo };
     registro += 'Grupo: ' + req.body.grupo + ' '
+    registroVisivel += req.body.grupo + ' '
   }
 
   if (req.body.obs) {
@@ -90,6 +96,7 @@ router.post("/", function(req, res, next) {
   if (req.body.motivo) {
     motivo = { motivo: req.body.motivo };
     registro += 'Motivo: ' + req.body.motivo + ' '
+    registroVisivel += req.body.motivo
   }
 
   if (req.body.bloqGestao) {
@@ -122,7 +129,7 @@ router.post("/", function(req, res, next) {
 
   let id = req.body.id;
 
-  let logs = { usuario: sess.login, registro: registro, data: new Date()}
+  let logs = { usuario: sess.login, registro: registro, registroVisivel: registroVisivel, data: new Date()}
 
   if (id) {
     global.db.updateOne(id, item, (err, result) => {
