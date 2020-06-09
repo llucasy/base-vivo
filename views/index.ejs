@@ -127,7 +127,8 @@
       </select>
       </label><br><br>
       <label>Grupo:
-      <select name="grupo">
+      <input list="grupo" name="grupo">
+      <datalist id="grupo">
         <option></option>
         <option <% if (grupo.grupo == '-') { %> selected <% } %> >-</option>
         <option <% if (grupo.grupo == 'EMP4') { %> selected <% } %> >EMP4</option>
@@ -140,7 +141,7 @@
         <option <% if (grupo.grupo == 'ProjetoHunter') { %> selected <% } %> >ProjetoHunter</option>
         <option <% if (grupo.grupo == 'ProjetoAgro') { %> selected <% } %> >ProjetoAgro</option>
         <option <% if (grupo.grupo == 'ProjetoRedecard') { %> selected <% } %> >ProjetoRedecard</option>
-      </select>
+      </datalist>
       </label><br><br>
       <label>Extra:
         <select name="extra">
