@@ -127,7 +127,7 @@
       </select>
       </label><br><br>
       <label>Grupo:
-      <input list="grupo" name="grupo">
+      <input list="grupo" name="grupo" value="<%= valorPesquisadoGrupo %>">
       <datalist id="grupo">
         <option></option>
         <option <% if (grupo.grupo == '-') { %> selected <% } %> >-</option>
