@@ -130,17 +130,9 @@
       <input list="grupo" name="grupo" value="<%= valorPesquisadoGrupo %>">
       <datalist id="grupo">
         <option></option>
-        <option <% if (grupo.grupo == '-') { %> selected <% } %> >-</option>
-        <option <% if (grupo.grupo == 'EMP4') { %> selected <% } %> >EMP4</option>
-        <option <% if (grupo.grupo == 'ExpansaoAssessoria') { %> selected <% } %> >ExpansaoAssessoria</option>
-        <option <% if (grupo.grupo == 'ExpansaoPersonalite') { %> selected <% } %> >ExpansaoPersonalite</option>
-        <option <% if (grupo.grupo == 'ExpansaoRedePri2') { %> selected <% } %> >ExpansaoRedePri2</option>
-        <option <% if (grupo.grupo == 'ExpansaoRedePri3') { %> selected <% } %> >ExpansaoRedePri3</option>
-        <option <% if (grupo.grupo == 'HunterEMP2e3') { %> selected <% } %> >HunterEMP2e3</option>
-        <option <% if (grupo.grupo == 'ProjetoSeguros') { %> selected <% } %> >ProjetoSeguros</option>
-        <option <% if (grupo.grupo == 'ProjetoHunter') { %> selected <% } %> >ProjetoHunter</option>
-        <option <% if (grupo.grupo == 'ProjetoAgro') { %> selected <% } %> >ProjetoAgro</option>
-        <option <% if (grupo.grupo == 'ProjetoRedecard') { %> selected <% } %> >ProjetoRedecard</option>
+    <% distinctGrupo.forEach(function(grupos){ %>
+        <option><%= grupos %></option>
+    <% }) %>
       </datalist>
       </label><br><br>
       <label>Extra:

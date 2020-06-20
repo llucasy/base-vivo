@@ -68,4 +68,8 @@ function bulk(item, mod, callback) {
   global.conn.collection('linhasgestao').updateMany(item, {$set: mod}, callback)
 }
 
-module.exports = { findAll, findOne, updateOne, contar, log, logBulk, bulk };
+function distinctGrupo(callback) {
+    global.conn.collection('linhasgestao').distinct('grupo', callback)
+}
+
+module.exports = { findAll, findOne, updateOne, contar, log, logBulk, bulk, distinctGrupo };

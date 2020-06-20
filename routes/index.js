@@ -79,19 +79,26 @@ router.get("/", function(req, res, next) {
       if (err) {
         console.log(err);
       }
-      res.render("index", {
-        docs,
-        contaRegistro,
-        login,
-        valorPesquisado,
-        valorPesquisadoGrupo,
-        local,
-        razao,
-        plano,
-        status,
-        grupo,
-        extra,
-        limit
+
+      global.db.distinctGrupo((err, distinctGrupo) => {
+          if (err) {
+              console.log(err);              
+          }
+        res.render("index", {
+            docs,
+            contaRegistro,
+            login,
+            valorPesquisado,
+            valorPesquisadoGrupo,
+            local,
+            razao,
+            plano,
+            status,
+            grupo,
+            extra,
+            limit,
+            distinctGrupo
+        });
       });
     });
   });
