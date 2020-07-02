@@ -16,14 +16,20 @@ router.get("/", function(req, res, next) {
   let lista3n = "";
   let str = ''
 
-  res.render("bulk", {
-    docs,
-    lista1n,
-    lista2n,
-    lista3n,
-    str,
-    title: "Pesquisa e alteração em massa - Usuário: " + sess.login
-  });
+   global.db.distinctGrupo((err, distinctGrupo) => {
+          if (err) {
+              console.log(err);              
+          }
+        res.render("bulk", {
+            docs,
+            lista1n,
+            lista2n,
+            lista3n,
+            str,
+            title: "Pesquisa e alteração em massa - Usuário: " + sess.login,
+            distinctGrupo
+        });
+    }); 
 });
 
 /* POST new page. */

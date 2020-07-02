@@ -157,20 +157,13 @@
                 </select>
             </label>
             <label><span class="titulo"> Grupo: </span> <br>
-                <select name="grupo">
+                <input list="grupo" name="grupo">
+                <datalist id="grupo">
                     <option></option>
-                    <option>-</option>
-                        <option>EMP4</option>
-                        <option>ExpansaoAssessoria</option>
-                        <option>ExpansaoPersonalite</option>
-                        <option>ExpansaoRedePri2</option>
-                        <option>ExpansaoRedePri3</option>
-                        <option>HunterEMP2e3</option>
-                        <option>ProjetoSeguros</option>
-                        <option>ProjetoHunter</option>
-                        <option>ProjetoAgro</option>
-                        <option>ProjetoRedecard</option>
-                </select>
+                <% distinctGrupo.forEach(function(grupos){ %>
+                    <option><%= grupos %></option>
+                <% }) %>
+                </datalist>
             </label>
             <label><span class="titulo"> OBS: </span> <br>
             <textarea maxlength="60" name="obs" rows="3" cols="28" placeholder="Digite uma observação sucinta..."></textarea></label>

@@ -30,9 +30,15 @@ router.get("/:id", function(req, res, next) {
       return console.log(err);
     }
 
-    res.render("new", {
-      title: "Detalhes da linha: " + linhasgestao.linha + " - Usuário: " + sess.login,
-      linhasgestao, formatarValor: formatarValor, tempoRelativo: tempoRelativo
+    global.db.distinctGrupo((err, distinctGrupo) => {
+          if (err) {
+              console.log(err);              
+          }
+
+        res.render("new", {
+        title: "Detalhes da linha: " + linhasgestao.linha + " - Usuário: " + sess.login,
+        linhasgestao, formatarValor: formatarValor, tempoRelativo: tempoRelativo, distinctGrupo
+        });
     });
   });
 });
