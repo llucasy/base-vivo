@@ -21,6 +21,7 @@ router.get("/", function(req, res, next) {
   let extra = {};
 
   let valorPesquisado;
+  let valorPesquisadoGrupo;
 
   if (req.query.limit) {
     limit = Number(req.query.limit);
@@ -50,6 +51,7 @@ router.get("/", function(req, res, next) {
 
   if (req.query.grupo) {
     grupo = { grupo: req.query.grupo };
+    valorPesquisadoGrupo = req.query.grupo;
   }
 
   if (req.query.extra) {
@@ -77,18 +79,26 @@ router.get("/", function(req, res, next) {
       if (err) {
         console.log(err);
       }
-      res.render("index", {
-        docs,
-        contaRegistro,
-        login,
-        valorPesquisado,
-        local,
-        razao,
-        plano,
-        status,
-        grupo,
-        extra,
-        limit
+
+      global.db.distinctGrupo((err, distinctGrupo) => {
+          if (err) {
+              console.log(err);              
+          }
+        res.render("index", {
+            docs,
+            contaRegistro,
+            login,
+            valorPesquisado,
+            valorPesquisadoGrupo,
+            local,
+            razao,
+            plano,
+            status,
+            grupo,
+            extra,
+            limit,
+            distinctGrupo
+        });
       });
     });
   });
