@@ -79,15 +79,21 @@ router.post("/", function(req, res, next) {
     global.db.findAll(project, limit, item, (e, docs) => {
       if (e) {
         return console.log(e);
-      }   
+      }
       
-      res.render("bulk", {
-        docs,
-        lista1n,
-        lista2n,
-        lista3n,
-        str,
-        title: "Pesquisa e alteração em massa - Usuário: " + sess.login
+      global.db.distinctGrupo((err, distinctGrupo) => {
+          if (err) {
+              console.log(err);              
+          }
+        res.render("bulk", {
+            docs,
+            lista1n,
+            lista2n,
+            lista3n,
+            str,
+            title: "Pesquisa e alteração em massa - Usuário: " + sess.login,
+            distinctGrupo
+        })
       })
     });
   }
