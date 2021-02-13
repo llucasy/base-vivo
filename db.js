@@ -7,7 +7,7 @@ mongoClient
       process.env.BANCO_LOGIN +
       ":" +
       process.env.BANCO_SENHA +
-      "@cluster0-ayz50.mongodb.net/test?retryWrites=true&w=majority",
+      "@cluster0-ayz50.mongodb.net/workshop?retryWrites=true&w=majority",
     { useUnifiedTopology: true }
   )
   .then(conn => (global.conn = conn.db("workshop")))
@@ -22,9 +22,9 @@ function findAll(project, limit, item, callback) {
     .toArray(callback);
 }
 
-// function insert(linhasgestao, callback) {
-//   global.conn.collection("linhasgestao").insert(linhasgestao, callback);
-// }
+function insertMany(item, callback) {
+   global.conn.collection("linhasgestao").insertMany(item, callback);
+ }
 
 // function deleteOne(id, callback) {
 //   global.conn
@@ -72,4 +72,4 @@ function distinctGrupo(callback) {
     global.conn.collection('linhasgestao').distinct('grupo', callback)
 }
 
-module.exports = { findAll, findOne, updateOne, contar, log, logBulk, bulk, distinctGrupo };
+module.exports = { findAll, insertMany, findOne, updateOne, contar, log, logBulk, bulk, distinctGrupo };

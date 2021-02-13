@@ -9,6 +9,7 @@ var indexRouter = require('./routes/index');
 var bulkRouter = require('./routes/bulk');
 var newRouter = require('./routes/new');
 var loginRouter = require('./routes/login');
+var insertRouter = require('./routes/insert');
 
 var app = express();
 
@@ -29,6 +30,7 @@ app.use('/', indexRouter);
 app.use('/bulk', bulkRouter);
 app.use('/new', newRouter);
 app.use('/login', loginRouter);
+app.use('/insert', insertRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

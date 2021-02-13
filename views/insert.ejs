@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>    
+    <title>Cadastro de novas linhas</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/bulk.css" /> 
+</head> 
+<body>
+<form action="/insert" method="POST"> 
+    <header>
+        <div id="header">
+            <h1><%= title %></h1>  
+            <p>Coloque os números das linhas abaixo, separadas por espaço ou quebra de linha. <b>Atenção na hora de cadastrar 😉!</b></p>
+        </div>
+    </header>
+    <main> 
+        <table>
+            <thead>
+                <tr>
+                <th id="contLinhas">0</th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr id="primeiraLinha"> 
+                <td id="linhas" rowspan="501"><textarea required maxlength="5999" name="contLinhas" rows="500" cols="11" ></textarea></td>
+            </tr>
+            </tbody>
+        </table>
+    </main>
+    <aside> 
+        <div id="filtros">
+            <a href="/"><button type="button">Voltar</button></a>
+            <label><p> <span class="titulo"> Local: </span> </p><br>
+                <select name="local" required>
+                        <option></option>
+                        <option value="Estoque_CT">Estoque CT</option>
+                        <option>Virtual</option>
+                        <option>-</option>
+                        <option value="Estoque_BBA">Estoque BBA</option>
+                        <option value="Com_colaborador">Com colaborador</option>
+                </select>
+            </label>
+            <label><span class="titulo"> Razão Social: </span> <br>
+                <select name="razao" required>
+                        <option></option>
+                        <option>REDECARD</option>
+                        <option>LUIZACRED</option>
+                        <option>KINEA_PRIVATE_EQUITY</option>
+                        <option>KINEA_INVESTIMENTOS</option>
+                        <option>ITAUSEG_SAUDE</option>
+                        <option>ITAU_VIDA_PREVIDENCIA</option>
+                        <option>ITAU_UNIBANCO</option>
+                        <option>ITAU_UNIBANCO_HOLDING</option>
+                        <option>ITAU_SEGUROS</option>
+                        <option>ITAU_CORRETORA_VALORES</option>
+                        <option>ITAU_CORRETORA_SEGUROS</option>
+                        <option>ICARROS_LTDA</option>
+                        <option>HIPERCARD_BCO_MULTIPLO</option>
+                        <option>FUNDACAO_SAUDE_ITAU</option>
+                        <option>FUND_ITAU_CLUBE</option>
+                        <option>FINANC_ITAU_CBD</option>
+                        <option>BANCO_ITAUCARD</option>
+                        <option>BANCO_ITAU_CONSIGNADO</option>
+                </select>
+            </label>
+            <label><span class="titulo"> Plano: </span> <br>
+                <select name="plano" required>
+                        <option></option>
+                        <option>Smart2GB</option>
+                        <option>Smart5GB</option>
+                        <option>Dados3GB</option>
+                        <option>Dados5GB</option>
+                        <option>Dados10GB</option>
+                        <option>SmartVoz</option>
+                        <option>BOX100GB</option>
+                        <option>TORPEDO</option>
+                        <option>Smart10GB</option>
+                        <option>Smart25GB</option>
+                </select>
+            </label>
+            <label><span class="titulo"> Status: </span> <br>
+                <select name="status" required>
+                    <option></option>
+                        <option>ATIVO</option>
+                        <option>DESATIVO</option>
+                        <option>PERDA_ROUBO</option>
+                        <option>CANCELADA</option>
+                </select>
+            </label>
+            <label><span class="titulo"> Extra: </span> <br>
+                <select name="extra" disabled>
+                        <option></option>
+                        <option>BloqDevolucao</option>
+                        <option>BloqEstoque</option>
+                        <option>MapRedDesativo</option>
+                        <option>MapRedPerdaRoubo</option>
+                        <option>MapRedNaoBloq</option>
+                </select>
+            </label>
+            <label><span class="titulo"> Grupo: </span> <br>
+                <input list="grupo" name="grupo">
+                <datalist id="grupo">
+                <% distinctGrupo.forEach(function(grupos){ %>
+                    <option><%= grupos %></option>
+                <% }) %>
+                </datalist>
+            </label>
+            <label><span class="titulo"> OBS: </span> <br>
+            <textarea maxlength="60" name="obs" rows="3" cols="28" placeholder="Digite uma observação sucinta..."></textarea></label>
+            <label><span class="titulo"> Motivo: </span> <br>
+            <textarea maxlength="60" name="motivo" rows="3" cols="28" placeholder="Digite de forma breve o motivo da sua alteração..."></textarea></label>
+            <label><span class="titulo"> Bloqueio Gestão: </span> <br>
+                <select name="bloqGestao" disabled>
+                    <option>Desbloqueado</option>
+                    <option>Bloqueado</option>
+                </select>
+            </label>
+            <br><br>
+            <input type="submit" name="insertBtn" value="Cadastrar linhas" />    
+        </div>
+    </aside>
+</form>
+    <script src="/javascript/insert.js" ></script>
+</body> 
+</html>
