@@ -32,8 +32,8 @@ router.post("/", function(req, res, next) {
       }
       break;
 
-    case process.env.CONVIDADO_L:
-      if (req.body.senha === process.env.CONVIDADO_S) {
+    case process.env.LUANA_L:
+      if (req.body.senha === process.env.LUANA_S) {
         sess.login = req.body.login;
         message = "";
         res.redirect("/");
@@ -54,8 +54,8 @@ router.post("/", function(req, res, next) {
         }
         break;
 
-        case process.env.FABIO_L:
-        if (req.body.senha === process.env.FABIO_S) {
+        case process.env.FERNANDO_L:
+        if (req.body.senha === process.env.FERNANDO_S) {
           sess.login = req.body.login;
           message = "";
           res.redirect("/");
