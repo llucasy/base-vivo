@@ -10,6 +10,7 @@ var bulkRouter = require('./routes/bulk');
 var newRouter = require('./routes/new');
 var loginRouter = require('./routes/login');
 var insertRouter = require('./routes/insert');
+var dashboardRouter = require('./routes/dashboard');
 
 var app = express();
 
@@ -31,6 +32,7 @@ app.use('/bulk', bulkRouter);
 app.use('/new', newRouter);
 app.use('/login', loginRouter);
 app.use('/insert', insertRouter);
+app.use('/dashboard', dashboardRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
