@@ -11,6 +11,7 @@ var newRouter = require('./routes/new');
 var loginRouter = require('./routes/login');
 var insertRouter = require('./routes/insert');
 var dashboardRouter = require('./routes/dashboard');
+var xlsxRouter = require('./routes/xlsx')
 
 var app = express();
 
@@ -33,6 +34,7 @@ app.use('/new', newRouter);
 app.use('/login', loginRouter);
 app.use('/insert', insertRouter);
 app.use('/dashboard', dashboardRouter);
+app.use('/xlsx', xlsxRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

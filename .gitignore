@@ -62,3 +62,6 @@ typings/
 
 # Scrapbook Mongo DB
 *.mongo
+
+# teste
+teste.js
