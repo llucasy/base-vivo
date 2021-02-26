@@ -1,6 +1,6 @@
 var ctx = document.getElementById('myChart');
 var myChart = new Chart(ctx, {
-    type: 'horizontalBar',
+    type: 'bar',
     data: {
         labels: estoque_labels,
         datasets: [{
@@ -9,14 +9,22 @@ var myChart = new Chart(ctx, {
             backgroundColor: 'rgba(54, 162, 235, 0.2)',
             borderColor: 'rgba(54, 162, 235, 1)',
             borderWidth: 2
+        },
+        {
+            label: 'Pulmão',
+            data: pulmao_data,
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            borderColor: 'rgba(255, 99, 132, 1)',
+            borderWidth: 2
         }]
     },
+    
     options: {
         scales: {
-            yAxes: [{ticks: {beginAtZero: true, autoSkip: true, maxTicksLimit: 70} }]
+            //yAxes: [{ticks: {beginAtZero: true, autoSkip: true, maxTicksLimit: 70} }]
         },
         title: {
-            display: true,
+            display: false,
             text: 'Linhas por DDD - Local'
         },
         animation: {
