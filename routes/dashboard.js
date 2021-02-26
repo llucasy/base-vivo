@@ -15,11 +15,9 @@ router.get('/', (req, res) => {
 
         let estoque = {}
         estoque.data = []
-        estoque.labels = []
 
         let pulmao = {}
         pulmao.data = []
-        pulmao.labels = []
 
         let qtData = 0
 
@@ -33,10 +31,8 @@ router.get('/', (req, res) => {
                 }
                 
             })
-            if (qtData > 0) {
-                estoque.data.push(qtData)
-                estoque.labels.push(D)
-            }
+            estoque.data.push(qtData)
+            // estoque.labels.push(D)
         });
 
         DDD.forEach(D => {
@@ -49,16 +45,12 @@ router.get('/', (req, res) => {
                 }
                 
             })
-            if (qtData > 0) {
-                pulmao.data.push(qtData)
-                pulmao.labels.push(D)
-            }
+            pulmao.data.push(qtData)
+            // pulmao.labels.push(D)
         });
 
         res.render('dashboard', {
-            estoqueLabels: estoque.labels, 
             estoqueData: estoque.data, 
-            pulmaoLabels: pulmao.labels, 
             pulmaoData: pulmao.data
         })
     })
