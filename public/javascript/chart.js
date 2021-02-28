@@ -21,7 +21,7 @@ var myChart = new Chart(ctx, {
     
     options: {
         scales: {
-            // xAxes: [{ticks: {beginAtZero: true, autoSkip: false, maxTicksLimit: 10} }]
+            xAxes: [{ticks: {beginAtZero: true, autoSkip: false, maxTicksLimit: 10} }]
         },
         title: {
             display: false,
@@ -33,3 +33,18 @@ var myChart = new Chart(ctx, {
         aspectRatio: 1.5
     }
 });
+
+ctx.onclick = (evt) => {
+    let activePoints = myChart.getElementAtEvent(evt);
+    // => activePoints is an array of points on the canvas that are at the same position as the click event.
+
+    if (activePoints.length === 1) {
+        const DDD = activePoints[0]['_model']['label']
+        if (activePoints[0]['_datasetIndex'] === 0) {
+            window.open(`/?pesqCamp=${DDD}&local=Estoque_CT&razao=&plano=&status=&grupo=&extra=&limit=30`, '_blank')
+        } else {
+            window.open(`/?pesqCamp=${DDD}&local=&razao=&plano=&status=&grupo=Pulmão&extra=&limit=30`, '_blank')
+        }
+    }
+
+};
