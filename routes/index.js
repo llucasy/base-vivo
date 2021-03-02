@@ -7,6 +7,7 @@ router.get("/", function(req, res, next) {
 
   if (!sess.login) {
     res.redirect("/login");
+    return
   }
 
   let login = sess.login;
