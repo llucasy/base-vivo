@@ -43,7 +43,11 @@ router.get("/", function(req, res, next) {
   }
 
   if (req.query.plano) {
-    plano = { plano: req.query.plano };
+    if (req.query.plano === 'Dados3_5_10'){
+      plano = { plano: { $in: ['Dados3GB', 'Dados5GB', 'Dados10GB']} } 
+    } else {
+    plano = { plano: req.query.plano } 
+    }
   }
 
   if (req.query.status) {

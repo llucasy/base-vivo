@@ -48,3 +48,47 @@ ctx.onclick = (evt) => {
     }
 
 };
+
+var ctxDados = document.getElementById('dadosChart');
+var myChartDados = new Chart(ctxDados, {
+    type: 'pie',
+    data: {
+        labels: ['Estoque', 'Pulmão'],
+        datasets: [{
+            label: 'Linhas de Dados',
+            data: dados_data,
+            backgroundColor: ['rgba(54, 162, 235, 0.2)', 'rgba(255, 99, 132, 0.2)'],
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 2
+        }]
+    },
+    
+    options: {
+        scales: {
+            xAxes: [{ticks: {beginAtZero: true, autoSkip: false, maxTicksLimit: 10} }]
+        },
+        title: {
+            display: true,
+            text: 'Linhas de Dados - Estoque, Pulmão'
+        },
+        animation: {
+            duration: 3000
+        },
+        aspectRatio: 4
+    }
+});
+
+ctxDados.onclick = (evt) => {
+    let activePoints = myChartDados.getElementAtEvent(evt);
+    // => activePoints is an array of points on the canvas that are at the same position as the click event.
+
+    if (activePoints.length === 1) {
+        //const DDD = activePoints[0]['_model']['label']
+        if (activePoints[0]['_index'] === 0) {
+            window.open(`/?pesqCamp=&local=Estoque_CT&razao=&plano=Dados3_5_10&status=&grupo=&extra=&limit=30`, '_blank')
+        } else {
+            window.open(`/?pesqCamp=&local=&razao=&plano=Dados3_5_10&status=&grupo=Pulmão&extra=&limit=30`, '_blank')
+        }
+    }
+
+};
