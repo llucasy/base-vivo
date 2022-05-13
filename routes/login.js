@@ -76,8 +76,30 @@ router.post("/", function(req, res, next) {
         }
         break;
 
-        case process.env.WAGNER_L:
-        if (req.body.senha === process.env.WAGNER_S) {
+        case process.env.BRUNA_L:
+        if (req.body.senha === process.env.BRUNA_S) {
+          sess.login = req.body.login;
+          message = "";
+          res.redirect("/");
+        } else {
+          message = "Senha errada";
+          res.render("login", { message });
+        }
+        break;
+
+        case process.env.THAMARA_L:
+        if (req.body.senha === process.env.THAMARA_S) {
+          sess.login = req.body.login;
+          message = "";
+          res.redirect("/");
+        } else {
+          message = "Senha errada";
+          res.render("login", { message });
+        }
+        break;
+
+        case process.env.VITOR_L:
+        if (req.body.senha === process.env.VITOR_S) {
           sess.login = req.body.login;
           message = "";
           res.redirect("/");
